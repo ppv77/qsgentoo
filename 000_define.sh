@@ -31,7 +31,7 @@ mp[fs,4]="ext4"
 
 makeopts="-j16"
 
-portage_uri="portage/"
+#portage_uri="portage/"
 #portage_uri="https://github.com/gentoo-mirror/gentoo.git"
 
 mount_distfiles=1

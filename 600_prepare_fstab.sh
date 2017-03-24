@@ -6,7 +6,7 @@ truncate --size 0 ${new_root}/etc/fstab
 
 for (( i=1; i < ${#mp[@]}/4+1; i++ ))
 do
-    [ "${mp[mountpoint,$i]}" == "grub" ] && continue
+    [ "${mp[mountpoint,$i]}" == "bios_grub" ] && continue
 #fs
     printf "${main_device}$i		" | sudo tee -a ${new_root}/etc/fstab >/dev/null
 #dir
