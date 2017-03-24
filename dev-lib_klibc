@@ -1,0 +1,2 @@
+# required by =dev-libs/klibc-2.0.4 (argument)
+=dev-libs/klibc-2.0.4 ~amd64

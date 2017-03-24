@@ -1,0 +1,2 @@
+FEATURES="getbinpkg buildpkg binpkg-multi-instance"
+
