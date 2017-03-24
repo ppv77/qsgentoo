@@ -25,12 +25,13 @@ emerge -1 =dev-libs/klibc-2.0.4
 emerge -u v86d
 rm /etc/portage/package.accept_keywords/dev-lib_klibc
 
+
+cp /k_config /usr/src/linux/.config
 if [ $genkernel == 1  ] ; then
     emerge -u genkernel
     genkernel --menuconfig --loglevel=4 --install --makeopts=${makeopts} all
 else
     emerge -u dracut
-    cp /proc/config.gz /usr/src/linux
     pushd /usr/src/linux
     gunzip config.gz
     mv config .config

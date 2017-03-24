@@ -3,6 +3,7 @@
 
 sudo cp 000_define.sh ${new_root}/
 sudo cp in_chroot_task.sh ${new_root}/
+sudo cp k_config ${new_root}/
 sudo cp /etc/resolv.conf ${new_root}/etc/
 sudo cp locale.gen ${new_root}/etc/
 if [ $use_packages = 1 ] ; then
