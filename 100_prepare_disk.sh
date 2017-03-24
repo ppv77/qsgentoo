@@ -4,13 +4,13 @@
 
 read -p "All data on ${main_device} will be removed (y/n):" yn
 [ $yn != "y" ] && exit
-
+sudo sgdisk --clear ${main_device}
 sudo parted -s ${main_device} mklabel gpt
 for (( i=1; i < ${#mp[@]}/4+1; i++ ))
 do
     sudo parted -s ${main_device} mkpart ${mp[mountpoint,$i]} ${mp[start,$i]} ${mp[end,$i]}
     [ "${mp[mountpoint,$i]}" == "/boot" ] && sudo parted -s ${main_device} set $i boot on
-    [ "${mp[mountpoint,$i]}" == "grub" ] && sudo parted -s ${main_device} set $i bios_grub on
+    [ "${mp[mountpoint,$i]}" == "bios_grub" ] && sudo parted -s ${main_device} set $i bios_grub on
     sleep 5
     case "${mp[fs,$i]}" in
 	"ext4" ) 
@@ -30,6 +30,8 @@ do
 	    ;;
 	"swap" )
 	    sudo mkswap -f ${main_device}$i
+	    ;;
+	"" )
 	    ;;
 	* ) 
 	    printf "${mp[fs,$i]} not supported by scripts\n"

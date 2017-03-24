@@ -9,10 +9,10 @@ new_root="/mnt/gentoo"
 main_device="/dev/sde"
 declare -A mp
 
-mp[mountpoint,1]="grub"
+mp[mountpoint,1]="bios_grub"
 mp[start,1]="1M"
 mp[end,1]="1G"
-mp[fs,1]="ext4"
+mp[fs,1]=""
 
 mp[mountpoint,2]="/boot"
 mp[start,2]="1G"

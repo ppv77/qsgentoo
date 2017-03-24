@@ -18,7 +18,7 @@ do
 	    ;;
 	"/" )
 	    ;;
-	"grub" )
+	"bios_grub" )
 	    ;;
 	* )
 	    [ ! -d ${new_root}${mp[mountpoint,$i]} ] && sudo mkdir -p ${new_root}${mp[mountpoint,$i]}
