@@ -59,5 +59,5 @@ grub-mkconfig -o /boot/grub/grub.cfg
 #read -p Enter
 
 echo "root:root"| chpasswd
-#emerge -u syslog-ng logrotate cronie 
+emerge -u syslog-ng logrotate cronie 
 
