@@ -43,4 +43,5 @@ mount_packages=0
 packages_path="/var/calculate/packages/x86_64"
 
 genkernel=0
+menuconfig=0
 ru=1

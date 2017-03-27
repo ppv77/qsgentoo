@@ -29,7 +29,9 @@ rm /etc/portage/package.accept_keywords/dev-lib_klibc
 cp /k_config /usr/src/linux/.config
 if [ $genkernel == 1  ] ; then
     emerge -u genkernel
-    genkernel --menuconfig --loglevel=4 --install --makeopts=${makeopts} all
+    [ $menuconfig == 1 ] && genkernel --menuconfig --loglevel=4 --install --makeopts=${makeopts} all
+    [ $menuconfig == 0 ] && genkernel --loglevel=4 --install --makeopts=${makeopts} all
+    
 else
     emerge -u dracut
     pushd /usr/src/linux
@@ -37,7 +39,7 @@ else
     mv config .config
     #read -p Enter
     make olddefconfig
-    make menuconfig
+    [ $menuconfig == 1 ] && make menuconfig
     #read -p Enter
     make ${makeopts} all
     #read -p Enter
@@ -59,7 +61,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 #read -p Enter
 
 echo "root:root"| chpasswd
-emerge -u syslog-ng logrotate cronie 
+emerge -u syslog-ng logrotate cronie
 rc-update add syslon-ng
 rc-update add cronie
 [ $ru = 1 ] && emerge terminus-font
