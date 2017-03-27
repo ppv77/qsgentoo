@@ -21,6 +21,7 @@ printf "sys-process/cronie\n" >>/var/lib/portage/world
 
 #see https://bugs.gentoo.org/show_bug.cgi?id=606154
 printf "=dev-libs/klibc-2.0.4 ~amd64\n" >>/etc/portage/package.accept_keywords/dev-lib_klibc
+printf "=dev-libs/klibc-2.0.4-r2\n" >> /etc/portage/package.mask/dev-lib_klibc
 
 env-update ; . /etc/profile
 eix-update
@@ -29,6 +30,7 @@ emerge  --depclean
 
 #see https://bugs.gentoo.org/show_bug.cgi?id=606154
 rm /etc/portage/package.accept_keywords/dev-lib_klibc
+rm /etc/portage/package.mask/dev-lib_klibc
 
 printf "Europe/Moscow" >/etc/timezone
 emerge --config sys-libs/timezone-data
