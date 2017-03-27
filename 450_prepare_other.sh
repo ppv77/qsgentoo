@@ -12,11 +12,9 @@ if [ $use_packages = 1 ] ; then
 fi
 
 if [ $ru = 1 ] ; then
-    ${sudo_cmd} mv ${chroot_files}/conf.d/consolefont ${chroot_files}/conf.d/consolefont.default
-    ${sudo_cmd} cp ${chroot_files}/consolefont ${chroot_files}/conf.d/consolefont
-    ${sudo_cmd} mv ${chroot_files}/conf.d/keymaps ${chroot_files}/conf.d/keymaps.default
-    ${sudo_cmd} cp ${chroot_files}/keymaps ${chroot_files}/conf.d/keymaps
+    ${sudo_cmd} mv ${new_root}/etc/conf.d/consolefont ${new_root}/etc/conf.d/consolefont.default
+    ${sudo_cmd} cp ${chroot_files}/consolefont ${new_root}/etc/conf.d/consolefont
+    ${sudo_cmd} mv ${new_root}/etc/conf.d/keymaps ${new_root}/etc/conf.d/keymaps.default
+    ${sudo_cmd} cp ${chroot_files}/keymaps ${new_root}/etc/conf.d/keymaps
 fi
 
-${sudo_cmd} mv ${chroot_files}/default/grub ${chroot_files}/default/grub.default
-${sudo_cmd} cp ${chroot_files}/grub ${chroot_files}/default/grub
