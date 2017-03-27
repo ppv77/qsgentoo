@@ -60,4 +60,8 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 echo "root:root"| chpasswd
 emerge -u syslog-ng logrotate cronie 
+rc-update add syslon-ng
+rc-update add cronie
+[ $ru = 1 ] && emerge terminus-font
+
 

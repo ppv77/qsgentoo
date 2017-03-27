@@ -1,5 +1,6 @@
 #!/bin/bash
 
+chroot_files="chroot_files"
 #Stage3_uri="http://distfiles.gentoo.org/releases/amd64/autobuilds/current-stage3-amd64/"
 Stage3_uri="http://mirror.yandex.ru/gentoo-distfiles/releases/amd64/autobuilds/current-stage3-amd64/"
 Stage3_file="stage3-amd64-201*.tar.bz2"
@@ -34,11 +35,12 @@ makeopts="-j16"
 #portage_uri="portage/"
 #portage_uri="https://github.com/gentoo-mirror/gentoo.git"
 
-mount_distfiles=1
+mount_distfiles=0
 distfiles_path="/var/calculate/remote/distfiles"
-use_packages=1
+use_packages=0
 binhost="http://mirror.yandex.ru/calculate/grp/x86_64"
-mount_packages=1
+mount_packages=0
 packages_path="/var/calculate/packages/x86_64"
 
-genkernel=1
+genkernel=0
+ru=1
