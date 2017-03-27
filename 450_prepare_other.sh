@@ -17,3 +17,6 @@ if [ $ru = 1 ] ; then
     sudo mv ${chroot_files}/conf.d/keymaps ${chroot_files}/conf.d/keymaps.default
     sudo cp ${chroot_files}/keymaps ${chroot_files}/conf.d/keymaps
 fi
+
+sudo mv ${chroot_files}/default/grub ${chroot_files}/default/grub.default
+sudo cp ${chroot_files}/grub ${chroot_files}/default/grub
