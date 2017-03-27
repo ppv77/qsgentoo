@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#sudo_cmd="/usr/bin/sudo"
+sudo_cmd=""
+
 chroot_files="chroot_files"
 #Stage3_uri="http://distfiles.gentoo.org/releases/amd64/autobuilds/current-stage3-amd64/"
 Stage3_uri="http://mirror.yandex.ru/gentoo-distfiles/releases/amd64/autobuilds/current-stage3-amd64/"
