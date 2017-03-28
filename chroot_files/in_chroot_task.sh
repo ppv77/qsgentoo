@@ -41,14 +41,15 @@ env-update ; . /etc/profile
 
 
 
-cp /k_config /usr/src/linux/.config
 if [ $genkernel == 1  ] ; then
     [ $menuconfig == 1 ] && genkernel --menuconfig --loglevel=4 --install --makeopts=${makeopts} all
     [ $menuconfig == 0 ] && genkernel --loglevel=4 --install --makeopts=${makeopts} all
     
 else
     pushd /usr/src/linux
-    #read -p Enter
+    [ -f "/.config" ] && cp  /usr/src/linux/
+    [ ! -f "/.config" ] && cp  /proc/config.gz /usr/src/linux && gunzip config.gz && mv config .config
+    read -p Enter
     make olddefconfig
     [ $menuconfig == 1 ] && make menuconfig
     #read -p Enter

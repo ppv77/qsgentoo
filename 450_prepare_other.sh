@@ -3,7 +3,6 @@
 
 ${sudo_cmd} cp 000_define.sh ${new_root}/
 ${sudo_cmd} cp ${chroot_files}/in_chroot_task.sh ${new_root}/
-${sudo_cmd} cp ${chroot_files}/k_config ${new_root}/
 ${sudo_cmd} cp /etc/resolv.conf ${new_root}/etc/
 ${sudo_cmd} cp ${chroot_files}/locale.gen ${new_root}/etc/
 if [ $use_packages = 1 ] ; then
@@ -18,3 +17,4 @@ if [ $ru = 1 ] ; then
     ${sudo_cmd} cp ${chroot_files}/keymaps ${new_root}/etc/conf.d/keymaps
 fi
 
+[ -f ${chroot_files}/${kernel_config} ] && ${sudo_cmd} cp ${chroot_files}/${kernel_config} ${new_root}/.config
