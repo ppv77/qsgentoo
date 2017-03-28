@@ -4,9 +4,10 @@ sudo_cmd="/usr/bin/sudo"
 #sudo_cmd=""
 
 chroot_files="chroot_files"
-#Stage3_uri="http://distfiles.gentoo.org/releases/amd64/autobuilds/current-stage3-amd64/"
-Stage3_uri="http://mirror.yandex.ru/gentoo-distfiles/releases/amd64/autobuilds/current-stage3-amd64/"
-Stage3_file="stage3-amd64-201*.tar.bz2"
+#Stage3_uri="http://distfiles.gentoo.org/releases/amd64/autobuilds/current-install-amd64-minimal/"
+Stage3_uri="http://mirror.yandex.ru/gentoo-distfiles/releases/amd64/autobuilds/current-install-amd64-minimal/"
+#Stage3_file="stage3-amd64-201*.tar.bz2"
+Stage3_file="stage3-amd64-nomultilib-*.tar.bz2"
 new_root="/mnt/gentoo"
 
 #mountpoints define
