@@ -24,7 +24,7 @@ printf "=dev-libs/klibc-2.0.4 ~amd64\n" >>/etc/portage/package.accept_keywords/d
 printf "=dev-libs/klibc-2.0.4-r2\n" >> /etc/portage/package.mask/dev-lib_klibc
 
 env-update ; . /etc/profile
-eix-update
+#eix-update
 emerge -uND --verbose-conflicts @world
 emerge  --depclean
 
@@ -47,7 +47,7 @@ if [ $genkernel == 1  ] ; then
     
 else
     pushd /usr/src/linux
-    [ -f "/.config" ] && cp  /usr/src/linux/
+    [ -f "/.config" ] && cp /.config /usr/src/linux/
     [ ! -f "/.config" ] && cp  /proc/config.gz /usr/src/linux && gunzip config.gz && mv config .config
     read -p Enter
     make olddefconfig
@@ -75,7 +75,7 @@ printf 'GRUB_COLOR_NORMAL="white/black"\n' >>/etc/default/grub
 printf 'GRUB_COLOR_HIGHLIGHT="magenta/black"\n' >>/etc/default/grub
 printf "GRUB_GFXPAYLOAD_LINUX=keep\n" >>/etc/default/grub
 printf 'GRUB_FONT="/usr/share/grub/unicode.pf2"\n' >>/etc/default/grub
-printf 'GRUB_CMDLINE_LINUX="zswap.enabled=1 zswap.compressor=lz4 zswap.max_pool_percent=30 video=1280x1024  elevator=cfq  splash=silent,theme:calculate console=tty1 quiet"\n' >>/etc/default/grub
+printf 'GRUB_CMDLINE_LINUX="zswap.enabled=1 zswap.compressor=lz4 zswap.max_pool_percent=30 video=1280x1024   console=tty1 quiet"\n' >>/etc/default/grub
 printf "GRUB_TERMINAL=console\n" >>/etc/default/grub
 #read -p Enter
 grub-install ${main_device}
@@ -85,7 +85,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 echo "root:root"| chpasswd
 
-rc-update add syslon-ng
-rc-update add cronie
+rc-update add syslon-ng default
+rc-update add cronie default
 
 

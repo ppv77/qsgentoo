@@ -65,9 +65,9 @@ packages_path="/var/calculate/packages/x86_64"
 #use genkernel? alternative with dracut.
 genkernel=0
 
-#kernel config or get from /proc/config.gz
-kernel_config=""
-#kernel_config="config-photon-os-4.4.8"
+#kernel config or get from /proc/config.gz if no
+#kernel_config=""
+kernel_config="config-photon-os-4.4.8"
 #kernel_config="config-test-4.9.16"
 #kernel_config="config-calculate-4.9.17"
 
