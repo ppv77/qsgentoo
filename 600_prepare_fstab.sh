@@ -2,7 +2,7 @@
 . 000_define.sh
 
 ${sudo_cmd} mv ${new_root}/etc/fstab  ${new_root}/etc/fstab.default
-truncate --size 0 ${new_root}/etc/fstab
+${sudo_cmd} truncate --size 0 ${new_root}/etc/fstab
 
 for (( i=1; i < ${#mp[@]}/4+1; i++ ))
 do

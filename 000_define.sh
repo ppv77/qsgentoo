@@ -46,3 +46,4 @@ packages_path="/var/calculate/packages/x86_64"
 genkernel=0
 menuconfig=0
 ru=1
+mk_stage4=0
