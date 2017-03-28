@@ -58,7 +58,8 @@ else
     #read -p Enter
     make install
     #read -p Enter
-    dracut --kver $(make kernelversion) --force
+    sleep 10
+    dracut --kver $(make kernelrelease) --force
     #read -p Enter
     popd
 fi
