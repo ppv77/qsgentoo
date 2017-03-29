@@ -1,4 +1,7 @@
 #!/bin/bash
+#This is config file for Quick Start Gentoo scripts https://github.com/ppv77/qsgentoo
+#Don't delete if you wont use this as Stage4
+
 debug=0
 #----------------------------------------------------
 #path to sudo or no sudo
@@ -103,4 +106,4 @@ rm_linux_sources=1
 
 #--------------------------
 #generate stage4 file?
-mk_stage4=0
+mk_stage4=1
