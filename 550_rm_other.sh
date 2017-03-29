@@ -10,7 +10,7 @@ if [ $use_packages = 1 ] ; then
 fi
 
 
-printf "cd /usr/src/linux/ && make clean" | ${sudo_cmd} tee ${new_root}/clean.sh >/dev/null
+printf "cd /usr/src/linux/ && make clean && emerge -c linux-sources && emerge -c" | ${sudo_cmd} tee ${new_root}/clean.sh >/dev/null
 ${sudo_cmd} chmod +x ${new_root}/clean.sh
 ${sudo_cmd} chroot ${new_root}  /clean.sh
 ${sudo_cmd} rm ${new_root}/clean.sh

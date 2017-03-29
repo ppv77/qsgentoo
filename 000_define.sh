@@ -97,6 +97,10 @@ menuconfig=0
 #add terminus-fonts and RU keyb
 ru=0
 
+#---------------------
+#rm kernel sources
+rm_linux-sources=1
+
 #--------------------------
 #generate stage4 file?
 mk_stage4=0
