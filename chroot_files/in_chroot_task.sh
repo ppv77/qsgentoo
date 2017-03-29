@@ -9,7 +9,8 @@ printf "net-misc/dhcpcd\n" >>/var/lib/portage/world
 printf "sys-fs/e2fsprogs\n" >>/var/lib/portage/world
 printf "sys-fs/reiserfsprogs\n" >>/var/lib/portage/world
 printf "sys-fs/xfsprogs\n" >>/var/lib/portage/world
-printf "sys-kernel/gentoo-sources\n" >>/var/lib/portage/world
+#printf "sys-kernel/gentoo-sources\n" >>/var/lib/portage/world
+printf "virtual/linux-sources\n" >>/var/lib/portage/world
 [ $genkernel == 0  ] && printf "sys-kernel/dracut\n" >>/var/lib/portage/world
 [ $genkernel == 1  ] && printf "sys-kernel/genkernel\n" >>/var/lib/portage/world
 printf "sys-apps/v86d\n" >>/var/lib/portage/world
@@ -24,7 +25,6 @@ printf "=dev-libs/klibc-2.0.4 ~amd64\n" >>/etc/portage/package.accept_keywords/d
 printf "=dev-libs/klibc-2.0.4-r2\n" >> /etc/portage/package.mask/dev-lib_klibc
 
 env-update ; . /etc/profile
-#eix-update
 emerge -uND --verbose-conflicts @world
 emerge  --depclean
 
@@ -41,7 +41,7 @@ printf "en_US ISO-8859-1\nen_US.UTF-8 UTF-8\n" >/etc/locale.gen
 locale-gen
 eselect locale set en_US.utf8
 env-update ; . /etc/profile
-
+[ $debug = 1 ] && read -p Enter
 
 
 if [ $genkernel == 1  ] ; then
@@ -52,19 +52,20 @@ else
     pushd /usr/src/linux
     [ -f "/.config" ] && cp /.config /usr/src/linux/
     [ ! -f "/.config" ] && cp  /proc/config.gz /usr/src/linux && gunzip config.gz && mv config .config
-    #read -p Enter
+[ $debug = 1 ] && read -p Enter
     make olddefconfig
+[ $debug = 1 ] && read -p Enter
     [ $menuconfig == 1 ] && make menuconfig
-    #read -p Enter
+[ $debug = 1 ] && read -p Enter
     make ${makeopts} all
-    #read -p Enter
+[ $debug = 1 ] && read -p Enter
     make modules_install
-    #read -p Enter
+[ $debug = 1 ] && read -p Enter
     make install
-    #read -p Enter
+[ $debug = 1 ] && read -p Enter
     sleep 10
     dracut --kver $(make kernelrelease) --force
-    #read -p Enter
+[ $debug = 1 ] && read -p Enter
     popd
 fi
 
@@ -80,15 +81,14 @@ printf "GRUB_GFXPAYLOAD_LINUX=keep\n" >>/etc/default/grub
 printf 'GRUB_FONT="/usr/share/grub/unicode.pf2"\n' >>/etc/default/grub
 printf 'GRUB_CMDLINE_LINUX="zswap.enabled=1 zswap.compressor=lz4 zswap.max_pool_percent=30 video=1280x1024   console=tty1 quiet"\n' >>/etc/default/grub
 printf "GRUB_TERMINAL=console\n" >>/etc/default/grub
-#read -p Enter
+[ $debug = 1 ] && read -p Enter
 grub-install ${main_device}
-#read -p Enter
+[ $debug = 1 ] && read -p Enter
 grub-mkconfig -o /boot/grub/grub.cfg
-#read -p Enter
-
+[ $debug = 1 ] && read -p Enter
 echo "root:root"| chpasswd
 
 rc-update add syslog-ng default
 rc-update add cronie default
-
+[ $debug = 1 ] && read -p Enter
 
