@@ -35,6 +35,9 @@ rm /etc/portage/package.mask/dev-lib_klibc
 printf "Europe/Moscow" >/etc/timezone
 emerge --config sys-libs/timezone-data
 
+[ ! -f "/etc/locale.gen.default" ] && mv /etc/locale.gen /etc/locale.gen.default
+printf "en_US ISO-8859-1\nen_US.UTF-8 UTF-8\n" >/etc/locale.gen
+[ $ru = 1 ] && printf "ru_RU.UTF-8 UTF-8\nru_RU.KOI-8 KOI-8\nru_RU.CP1251 CP1251\nru_RU ISO-8859-5\n" >>/etc/locale.gen
 locale-gen
 eselect locale set en_US.utf8
 env-update ; . /etc/profile
@@ -49,7 +52,7 @@ else
     pushd /usr/src/linux
     [ -f "/.config" ] && cp /.config /usr/src/linux/
     [ ! -f "/.config" ] && cp  /proc/config.gz /usr/src/linux && gunzip config.gz && mv config .config
-    read -p Enter
+    #read -p Enter
     make olddefconfig
     [ $menuconfig == 1 ] && make menuconfig
     #read -p Enter
@@ -85,7 +88,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 echo "root:root"| chpasswd
 
-rc-update add syslon-ng default
+rc-update add syslog-ng default
 rc-update add cronie default
 
 

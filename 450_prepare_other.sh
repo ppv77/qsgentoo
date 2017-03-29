@@ -4,7 +4,6 @@
 ${sudo_cmd} cp 000_define.sh ${new_root}/
 ${sudo_cmd} cp ${chroot_files}/in_chroot_task.sh ${new_root}/
 ${sudo_cmd} cp /etc/resolv.conf ${new_root}/etc/
-${sudo_cmd} cp ${chroot_files}/locale.gen ${new_root}/etc/
 if [ $use_packages = 1 ] ; then
     ${sudo_cmd} cp ${chroot_files}/binpkg ${new_root}/etc/portage/make.conf
     printf 'PORTAGE_BINHOST="'$binhost'"' | ${sudo_cmd} tee -a ${new_root}/etc/portage/make.conf/binpkg >/dev/null
