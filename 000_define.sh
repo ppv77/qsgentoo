@@ -1,18 +1,21 @@
 #!/bin/bash
-
+#----------------------------------------------------
 #path to sudo or no sudo
 sudo_cmd="/usr/bin/sudo"
 #sudo_cmd=""
 
+#--------------------------------------------------
 #where script find files for chroot 
 chroot_files="chroot_files"
 
+#----------------------------------------------
 #gentoo stage uri and file
 #Stage3_uri="http://distfiles.gentoo.org/releases/amd64/autobuilds/current-install-amd64-minimal/"
 Stage3_uri="http://mirror.yandex.ru/gentoo-distfiles/releases/amd64/autobuilds/current-install-amd64-minimal/"
 #Stage3_file="stage3-amd64-201*.tar.bz2"
 Stage3_file="stage3-amd64-nomultilib-*.tar.bz2"
 
+#---------------------------------------------------
 #path to mount new rootfs
 new_root="/mnt/gentoo"
 
@@ -45,35 +48,45 @@ mp[mountpoint,4]="/"
 mp[start,4]="4G"
 mp[end,4]="40G"
 mp[fs,4]="ext4"
-#-------------------------------------------------------------------------------------------------------
 
+#-------------------------------------------------------------------------------------------------------
 #makeopts for emerge and kernel compile = cpu count
 makeopts="-j16"
 
+#--------------------------------------------------
 #we already have distfiles? if livecd - no. new files will be stored
-mount_distfiles=0
-distfiles_path="/var/calculate/remote/distfiles"
+mount_distfiles=1
+#distfiles_path="/var/calculate/remote/distfiles"
+distfiles_path="/home/guest/for_stage4/distfiles"
 
+#-----------------------------------------------------
 #use and make pkg
-use_packages=0
+use_packages=1
 #if we have pkgs
-binhost="http://mirror.yandex.ru/calculate/grp/x86_64"
-#we have local pkgs? new files will be stored
-mount_packages=0
-packages_path="/var/calculate/packages/x86_64"
+#binhost="http://mirror.yandex.ru/calculate/grp/x86_64"
 
+#we have local pkgs? new files will be stored
+mount_packages=1
+#packages_path="/var/calculate/packages/x86_64"
+packages_path="/home/guest/for_stage4/packages"
+
+#---------------------------------------------------
 #use genkernel? alternative with dracut.
 genkernel=0
 
-#kernel config or get from /proc/config.gz if no
+#kernel config for non genkernel, or get from /proc/config.gz if no
 #kernel_config=""
-kernel_config="config-photon-os-4.4.8"
-#kernel_config="config-test-4.9.16"
+#kernel_config="config-photon-os-4.4.8"
+kernel_config="config-vmwStage4-minimal-4.9.16"
 #kernel_config="config-calculate-4.9.17"
 
 #do menuconfig?
 menuconfig=0
+
+#-------------------------
 #add terminus-fonts and RU keyb
-ru=1
-#generate Stage4 file?
+ru=0
+
+#--------------------------
+#generate stage4 file?
 mk_stage4=0
