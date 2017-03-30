@@ -90,8 +90,8 @@ genkernel=0
 #kernel config for non genkernel, or get from /proc/config.gz if no
 #kernel_config=""
 #kernel_config="config-photon-os-4.4.8"
-kernel_config="config-vmwStage4-minimal-4.9.16"
-#kernel_config="config-calculate-4.9.17"
+#kernel_config="config-esx-minimal-4.9.16"
+kernel_config="config-gentoo-livecd-4.9.16"
 
 #do menuconfig?
 menuconfig=0
