@@ -94,7 +94,8 @@ packages_path="/var/www/localhost/for_stage4/packages"
 #use genkernel? get precompiled from url? or conpile with config-file
 #kernel="genkernel"
 kernel="precompiled"
-precompiled_url="http://10.10.104.122/for_stage4/4.9.16.tar.bz2"
+precompiled_uri="http://10.10.104.122/for_stage4/"
+precompiled_file="4.9.16.tar.bz2"
 #kernel config for non genkernel, or get from /proc/config.gz if no
 #kernel=""
 #kernel="config-photon-os-4.4.8"
@@ -114,4 +115,4 @@ rm_linux_sources=1
 
 #--------------------------
 #generate stage4 file?
-mk_stage4=0
+mk_stage4=1
