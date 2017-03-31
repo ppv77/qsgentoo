@@ -20,6 +20,12 @@ Stage3_uri="http://10.10.104.122/for_stage4/"
 #Stage3_file="stage3-amd64-201*.tar.bz2"
 Stage3_file="stage3-amd64-nomultilib-*.tar.bz2"
 
+#------------------------------------
+#where download portage? or get from git if not defined
+#portage_zip=""
+#portage_zip="https://github.com/gentoo-mirror/gentoo/archive/stable.zip"
+portage_zip="http://10.10.104.122/for_stage4/stable.zip"
+
 #---------------------------------------------------
 #path to mount new rootfs
 new_root="/mnt/gentoo"
