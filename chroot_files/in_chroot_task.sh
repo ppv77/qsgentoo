@@ -21,15 +21,15 @@ printf "sys-process/cronie\n" >>/var/lib/portage/world
 #printf "=dev-libs/klibc-2.0.4-r2\n" >> /etc/portage/package.mask/dev-lib_klibc
 
 env-update ; . /etc/profile
-emerge -uND --verbose-conflicts @world
-emerge  --depclean
+emerge -quND --verbose-conflicts @world
+emerge  -q --depclean
 
 #see https://bugs.gentoo.org/show_bug.cgi?id=606154
 #rm /etc/portage/package.accept_keywords/dev-lib_klibc
 #rm /etc/portage/package.mask/dev-lib_klibc
 
 printf "Europe/Moscow" >/etc/timezone
-emerge --config sys-libs/timezone-data
+emerge -q --config sys-libs/timezone-data
 
 [ ! -f "/etc/locale.gen.default" ] && mv /etc/locale.gen /etc/locale.gen.default
 printf "en_US ISO-8859-1\nen_US.UTF-8 UTF-8\n" >/etc/locale.gen
@@ -42,7 +42,7 @@ env-update ; . /etc/profile
 
 case $kernel in
     "genkernel" )
-	emerge virtual/linux-sources genkernel
+	emerge -q virtual/linux-sources genkernel
 	[ $menuconfig == 1 ] && genkernel --menuconfig --loglevel=4 --install --makeopts=${makeopts} all
 	[ $menuconfig == 0 ] && genkernel --loglevel=4 --install --makeopts=${makeopts} all
     ;;
@@ -51,7 +51,7 @@ case $kernel in
 	tar xjpf ${precompiled_file} && rm ${precompiled_file}
     ;;
     * )
-	emerge virtual/linux-sources dracut
+	emerge -q virtual/linux-sources dracut
 	pushd /usr/src/linux >/dev/null
 	[ -f "/.config" ] && cp /.config /usr/src/linux/
 	[ ! -f "/.config" ] && cp  /proc/config.gz /usr/src/linux && gunzip config.gz && mv config .config
