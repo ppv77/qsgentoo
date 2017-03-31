@@ -15,7 +15,8 @@ chroot_files="chroot_files"
 #----------------------------------------------
 #gentoo stage uri and file
 #Stage3_uri="http://distfiles.gentoo.org/releases/amd64/autobuilds/current-install-amd64-minimal/"
-Stage3_uri="http://mirror.yandex.ru/gentoo-distfiles/releases/amd64/autobuilds/current-install-amd64-minimal/"
+#Stage3_uri="http://mirror.yandex.ru/gentoo-distfiles/releases/amd64/autobuilds/current-install-amd64-minimal/"
+Stage3_uri="http://10.10.104.122/for_stage4/"
 #Stage3_file="stage3-amd64-201*.tar.bz2"
 Stage3_file="stage3-amd64-nomultilib-*.tar.bz2"
 
@@ -70,18 +71,18 @@ makeopts="-j16"
 #we already have distfiles? if livecd - no. new files will be stored
 mount_distfiles=1
 #distfiles_path="/var/calculate/remote/distfiles"
-distfiles_path="/home/guest/for_stage4/distfiles"
+distfiles_path="/var/www/localhost/for_stage4/distfiles"
 
 #-----------------------------------------------------
 #use and make pkg
 use_packages=1
 #if we have pkgs
-#binhost="http://mirror.yandex.ru/calculate/grp/x86_64"
+binhost="http://10.10.104.122/for_stage4/packages"
 
 #we have local pkgs? new files will be stored
 mount_packages=1
 #packages_path="/var/calculate/packages/x86_64"
-packages_path="/home/guest/for_stage4/packages"
+packages_path="/var/www/localhost/for_stage4/packages"
 
 #---------------------------------------------------
 #use genkernel? get precompiled from url? or conpile with config-file
@@ -107,4 +108,4 @@ rm_linux_sources=1
 
 #--------------------------
 #generate stage4 file?
-mk_stage4=1
+mk_stage4=0
