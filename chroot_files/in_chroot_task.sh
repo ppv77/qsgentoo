@@ -9,10 +9,6 @@ printf "net-misc/dhcpcd\n" >>/var/lib/portage/world
 printf "sys-fs/e2fsprogs\n" >>/var/lib/portage/world
 printf "sys-fs/reiserfsprogs\n" >>/var/lib/portage/world
 printf "sys-fs/xfsprogs\n" >>/var/lib/portage/world
-#printf "sys-kernel/gentoo-sources\n" >>/var/lib/portage/world
-printf "virtual/linux-sources\n" >>/var/lib/portage/world
-[ $genkernel == 0  ] && printf "sys-kernel/dracut\n" >>/var/lib/portage/world
-[ $genkernel == 1  ] && printf "sys-kernel/genkernel\n" >>/var/lib/portage/world
 printf "sys-apps/v86d\n" >>/var/lib/portage/world
 printf "sys-boot/grub\n" >>/var/lib/portage/world
 printf "app-admin/syslog-ng\n" >>/var/lib/portage/world
@@ -44,30 +40,32 @@ env-update ; . /etc/profile
 [ $debug = 1 ] && read -p Enter
 
 
-if [ $genkernel == 1  ] ; then
-    [ $menuconfig == 1 ] && genkernel --menuconfig --loglevel=4 --install --makeopts=${makeopts} all
-    [ $menuconfig == 0 ] && genkernel --loglevel=4 --install --makeopts=${makeopts} all
-    
-else
-    pushd /usr/src/linux
-    [ -f "/.config" ] && cp /.config /usr/src/linux/
-    [ ! -f "/.config" ] && cp  /proc/config.gz /usr/src/linux && gunzip config.gz && mv config .config
-[ $debug = 1 ] && read -p Enter
-    make olddefconfig
-[ $debug = 1 ] && read -p Enter
-    [ $menuconfig == 1 ] && make menuconfig
-[ $debug = 1 ] && read -p Enter
-    make ${makeopts} all
-[ $debug = 1 ] && read -p Enter
-    make modules_install
-[ $debug = 1 ] && read -p Enter
-    make install
-[ $debug = 1 ] && read -p Enter
-    sleep 10
-    dracut --kver $(make kernelrelease) --force
-[ $debug = 1 ] && read -p Enter
-    popd
-fi
+case $kernel in
+    "genkernel" )
+	emerge virtual/linux-sources genkernel
+	[ $menuconfig == 1 ] && genkernel --menuconfig --loglevel=4 --install --makeopts=${makeopts} all
+	[ $menuconfig == 0 ] && genkernel --loglevel=4 --install --makeopts=${makeopts} all
+    ;;
+    "precompiled" )
+	wget ${precompiled_url}
+	
+    ;;
+    * )
+	emerge virtual/linux-sources dracut
+	pushd /usr/src/linux
+	[ -f "/.config" ] && cp /.config /usr/src/linux/
+	[ ! -f "/.config" ] && cp  /proc/config.gz /usr/src/linux && gunzip config.gz && mv config .config
+        make olddefconfig
+	[ $menuconfig == 1 ] && make menuconfig
+        make ${makeopts} all
+        make modules_install
+        make install
+        sleep 10
+	dracut --kver $(make kernelrelease) --force
+        popd
+    ;;
+
+esac
 
 
 printf "GRUB_DISABLE_RECOVERY=true\n" >>/etc/default/grub

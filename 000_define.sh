@@ -84,14 +84,15 @@ mount_packages=1
 packages_path="/home/guest/for_stage4/packages"
 
 #---------------------------------------------------
-#use genkernel? alternative with dracut.
-genkernel=0
-
+#use genkernel? get precompiled from url? or conpile with config-file
+#kernel="genkernel"
+kernel="precompiled"
+precompiled_url="http://10.10.104.122/for_stage4/4.9.16.tar.bz2"
 #kernel config for non genkernel, or get from /proc/config.gz if no
-#kernel_config=""
-#kernel_config="config-photon-os-4.4.8"
-#kernel_config="config-esx-minimal-4.9.16"
-kernel_config="config-gentoo-livecd-4.9.16"
+#kernel=""
+#kernel="config-photon-os-4.4.8"
+#kernel="config-esx-minimal-4.9.16"
+#kernel="config-gentoo-livecd-4.9.16"
 
 #do menuconfig?
 menuconfig=0

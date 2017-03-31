@@ -16,4 +16,4 @@ if [ $ru = 1 ] ; then
     ${sudo_cmd} cp ${chroot_files}/keymaps ${new_root}/etc/conf.d/keymaps
 fi
 
-[ -f ${chroot_files}/${kernel_config} ] && ${sudo_cmd} cp ${chroot_files}/${kernel_config} ${new_root}/.config
+[ -f ${chroot_files}/${kernel} ] && ${sudo_cmd} cp ${chroot_files}/${kernel} ${new_root}/.config
