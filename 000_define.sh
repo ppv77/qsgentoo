@@ -115,4 +115,4 @@ rm_linux_sources=1
 
 #--------------------------
 #generate stage4 file?
-mk_stage4=1
+mk_stage4=0

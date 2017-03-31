@@ -47,12 +47,12 @@ case $kernel in
 	[ $menuconfig == 0 ] && genkernel --loglevel=4 --install --makeopts=${makeopts} all
     ;;
     "precompiled" )
-	wget ${precompiled_uri}${precompiled_file}
+	wget -q ${precompiled_uri}${precompiled_file}
 	tar xjpf ${precompiled_file} && rm ${precompiled_file}
     ;;
     * )
 	emerge virtual/linux-sources dracut
-	pushd /usr/src/linux
+	pushd /usr/src/linux >/dev/null
 	[ -f "/.config" ] && cp /.config /usr/src/linux/
 	[ ! -f "/.config" ] && cp  /proc/config.gz /usr/src/linux && gunzip config.gz && mv config .config
         make olddefconfig
@@ -62,7 +62,7 @@ case $kernel in
         make install
         sleep 10
 	dracut --kver $(make kernelrelease) --force
-        popd
+        popd >/dev/null
     ;;
 
 esac
