@@ -9,7 +9,6 @@ if [ $use_packages = 1 ] ; then
 fi
 
 ${sudo_cmd} rm -Rf ${new_root}/usr/portage
-${sudo_cmd} rm ${new_root}/stage3*
 
 
 
