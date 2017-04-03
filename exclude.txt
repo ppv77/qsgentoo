@@ -4,5 +4,3 @@
 ./usr/portage/distfiles/*
 ./usr/portage/packages/*
 ./etc/reslov.conf
-./*.sh
-./stage*
