@@ -12,5 +12,5 @@ if [ ! ${portage_zip} = "" ] ; then
     ${sudo_cmd} rm stable.zip
     popd >/dev/null
 else
-    ${sudo_cmd} git clone https://github.com/gentoo-mirror/gentoo.git ${new_root}/usr/portage
+    ${sudo_cmd} git clone --depth 1 https://github.com/gentoo-mirror/gentoo.git ${new_root}/usr/portage
 fi
