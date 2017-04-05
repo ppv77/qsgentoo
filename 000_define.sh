@@ -5,8 +5,8 @@
 debug=0
 #----------------------------------------------------
 #path to sudo or no sudo
-sudo_cmd="/usr/bin/sudo"
-#sudo_cmd=""
+#sudo_cmd="/usr/bin/sudo"
+sudo_cmd=""
 
 #--------------------------------------------------
 #where script find files for chroot 
@@ -15,23 +15,23 @@ chroot_files="chroot_files"
 #----------------------------------------------
 #gentoo stage uri and file
 #Stage3_uri="http://distfiles.gentoo.org/releases/amd64/autobuilds/current-install-amd64-minimal/"
-#Stage3_uri="http://mirror.yandex.ru/gentoo-distfiles/releases/amd64/autobuilds/current-install-amd64-minimal/"
-Stage3_uri="http://10.10.104.122/for_stage4/"
+Stage3_uri="http://mirror.yandex.ru/gentoo-distfiles/releases/amd64/autobuilds/current-install-amd64-minimal/"
+#Stage3_uri="http://10.10.104.122/for_stage4/"
 #Stage3_file="stage3-amd64-201*.tar.bz2"
 Stage3_file="stage3-amd64-nomultilib-*.tar.bz2"
 
 #------------------------------------
 #where download portage? or get from git if not defined
 #portage_zip=""
-#portage_zip="https://github.com/gentoo-mirror/gentoo/archive/stable.zip"
-portage_zip="http://10.10.104.122/for_stage4/stable.zip"
+portage_zip="https://github.com/gentoo-mirror/gentoo/archive/stable.zip"
+#portage_zip="http://10.10.104.122/for_stage4/stable.zip"
 
 #---------------------------------------------------
 #path to mount new rootfs
 new_root="/mnt/gentoo"
 
 #!!!!!!!!!!!!!!!!
-main_device="/dev/sde"
+main_device="/dev/sda"
 #!!!!!!!!!!!!!!!!!!!!!!
 #mountpoints define-------------------------------------------------------------------------------------------
 #this for 40G disk
@@ -71,36 +71,36 @@ mp[fs,2]="ext4"
 
 #-------------------------------------------------------------------------------------------------------
 #makeopts for emerge and kernel compile = cpu count
-makeopts="-j16"
+makeopts="-j5"
 
 #--------------------------------------------------
 #we already have distfiles? if livecd - no. new files will be stored
-mount_distfiles=1
+mount_distfiles=0
 #distfiles_path="/var/calculate/remote/distfiles"
 distfiles_path="/var/www/localhost/for_stage4/distfiles"
 
 #-----------------------------------------------------
 #use and make pkg
-use_packages=1
+use_packages=0
 #if we have pkgs
 binhost="http://10.10.104.122/for_stage4/packages"
 
 #we have local pkgs? new files will be stored
-mount_packages=1
+mount_packages=0
 #packages_path="/var/calculate/packages/x86_64"
 packages_path="/var/www/localhost/for_stage4/packages"
 
 #---------------------------------------------------
 #use genkernel? get precompiled from url? or conpile with config-file
 #kernel="genkernel"
-kernel="precompiled"
+#kernel="precompiled"
 precompiled_uri="http://10.10.104.122/for_stage4/"
 precompiled_file="4.9.16.tar.bz2"
 #kernel config for non genkernel, or get from /proc/config.gz if no
 #kernel=""
 #kernel="config-photon-os-4.4.8"
 #kernel="config-esx-minimal-4.9.16"
-#kernel="config-gentoo-livecd-4.9.16"
+kernel="config-gentoo-livecd-4.9.16"
 
 #do menuconfig?
 menuconfig=0
