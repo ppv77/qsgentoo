@@ -14,17 +14,17 @@ chroot_files="chroot_files"
 
 #----------------------------------------------
 #gentoo stage uri and file
-#Stage3_uri="http://distfiles.gentoo.org/releases/amd64/autobuilds/current-install-amd64-minimal/"
+Stage3_uri="http://distfiles.gentoo.org/releases/amd64/autobuilds/current-install-amd64-minimal/"
 #Stage3_uri="http://mirror.yandex.ru/gentoo-distfiles/releases/amd64/autobuilds/current-install-amd64-minimal/"
-Stage3_uri="http://10.10.104.122/for_stage4/"
+#Stage3_uri="http://10.10.104.122/for_stage4/"
 #Stage3_file="stage3-amd64-201*.tar.bz2"
 Stage3_file="stage3-amd64-nomultilib-*.tar.bz2"
 
 #------------------------------------
-#where download portage? or get from git if not defined
+#where download portage? or get from git if not defined (warning!!! no git on gentoo-livecd)
 #portage_zip=""
-#portage_zip="https://github.com/gentoo-mirror/gentoo/archive/stable.zip"
-portage_zip="http://10.10.104.122/for_stage4/stable.zip"
+portage_zip="https://github.com/gentoo-mirror/gentoo/archive/stable.zip"
+#portage_zip="http://10.10.104.122/for_stage4/stable.zip"
 
 #---------------------------------------------------
 #path to mount new rootfs
@@ -71,7 +71,7 @@ mp[fs,2]="ext4"
 
 #-------------------------------------------------------------------------------------------------------
 #makeopts for emerge and kernel compile = cpu count
-makeopts="-j5"
+makeopts="-j17"
 
 #--------------------------------------------------
 #we already have distfiles? if livecd - no. new files will be stored
@@ -81,7 +81,7 @@ distfiles_path="/var/www/localhost/for_stage4/distfiles"
 
 #-----------------------------------------------------
 #use and make pkg
-use_packages=1
+use_packages=0
 #if we have pkgs
 binhost="http://10.10.104.122/for_stage4/packages"
 
@@ -91,10 +91,11 @@ mount_packages=0
 packages_path="/var/www/localhost/for_stage4/packages"
 
 #---------------------------------------------------
-#use genkernel? get precompiled from url? or conpile with config-file
+#use genkernel?
 #kernel="genkernel"
-
+#use precompiled kernel from livecd
 kernel="livecd"
+#use precompiled kernel from url
 #kernel="precompiled"
 precompiled_uri="http://10.10.104.122/for_stage4/"
 precompiled_file="4.9.16.tar.bz2"
@@ -113,7 +114,7 @@ ru=0
 
 #---------------------
 #rm kernel sources
-rm_linux_sources=1
+rm_linux_sources=0
 
 #--------------------------
 #generate stage4 file?
