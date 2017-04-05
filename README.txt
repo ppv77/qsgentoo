@@ -1,9 +1,15 @@
 # qsgentoo
 Quick Start Gentoo script
-edit 000_define.sh
-run ./0000_run.sh
-//or step by step
-reboot
-login root:root
-eix-sync
+1. boot from gentoo livecd
+2. wget https://github.com/ppv77/qsgentoo/archive/v<release>.tar.gz
+3. tar xzf v<release>.tar.gz
+4. cd qsgentoo-<release>
+5. nano 000_define.sh
+6. edit and save (By default will be installed system on /dev/sda=40G in one partition)
+7. ./0000_run.sh
+8. reboot
+9. login root:root
+10. eix-sync
+11. emerge -uND @world
+12. feel nice
 
