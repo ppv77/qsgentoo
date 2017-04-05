@@ -15,16 +15,16 @@ chroot_files="chroot_files"
 #----------------------------------------------
 #gentoo stage uri and file
 #Stage3_uri="http://distfiles.gentoo.org/releases/amd64/autobuilds/current-install-amd64-minimal/"
-Stage3_uri="http://mirror.yandex.ru/gentoo-distfiles/releases/amd64/autobuilds/current-install-amd64-minimal/"
-#Stage3_uri="http://10.10.104.122/for_stage4/"
+#Stage3_uri="http://mirror.yandex.ru/gentoo-distfiles/releases/amd64/autobuilds/current-install-amd64-minimal/"
+Stage3_uri="http://10.10.104.122/for_stage4/"
 #Stage3_file="stage3-amd64-201*.tar.bz2"
 Stage3_file="stage3-amd64-nomultilib-*.tar.bz2"
 
 #------------------------------------
 #where download portage? or get from git if not defined
 #portage_zip=""
-portage_zip="https://github.com/gentoo-mirror/gentoo/archive/stable.zip"
-#portage_zip="http://10.10.104.122/for_stage4/stable.zip"
+#portage_zip="https://github.com/gentoo-mirror/gentoo/archive/stable.zip"
+portage_zip="http://10.10.104.122/for_stage4/stable.zip"
 
 #---------------------------------------------------
 #path to mount new rootfs
@@ -81,7 +81,7 @@ distfiles_path="/var/www/localhost/for_stage4/distfiles"
 
 #-----------------------------------------------------
 #use and make pkg
-use_packages=0
+use_packages=1
 #if we have pkgs
 binhost="http://10.10.104.122/for_stage4/packages"
 
@@ -93,14 +93,14 @@ packages_path="/var/www/localhost/for_stage4/packages"
 #---------------------------------------------------
 #use genkernel? get precompiled from url? or conpile with config-file
 #kernel="genkernel"
-#kernel="precompiled"
+kernel="precompiled"
 precompiled_uri="http://10.10.104.122/for_stage4/"
 precompiled_file="4.9.16.tar.bz2"
 #kernel config for non genkernel, or get from /proc/config.gz if no
 #kernel=""
 #kernel="config-photon-os-4.4.8"
 #kernel="config-esx-minimal-4.9.16"
-kernel="config-gentoo-livecd-4.9.16"
+#kernel="config-gentoo-livecd-4.9.16"
 
 #do menuconfig?
 menuconfig=0
