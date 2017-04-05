@@ -93,7 +93,9 @@ packages_path="/var/www/localhost/for_stage4/packages"
 #---------------------------------------------------
 #use genkernel? get precompiled from url? or conpile with config-file
 #kernel="genkernel"
-kernel="precompiled"
+
+kernel="livecd"
+#kernel="precompiled"
 precompiled_uri="http://10.10.104.122/for_stage4/"
 precompiled_file="4.9.16.tar.bz2"
 #kernel config for non genkernel, or get from /proc/config.gz if no

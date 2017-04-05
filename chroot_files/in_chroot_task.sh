@@ -50,6 +50,9 @@ case $kernel in
 	wget -q ${precompiled_uri}${precompiled_file}
 	tar xjpf ${precompiled_file} && rm ${precompiled_file}
     ;;
+    "livecd" )
+	emerge -q dracut
+    ;;
     * )
 	emerge -q virtual/linux-sources dracut
 	pushd /usr/src/linux >/dev/null

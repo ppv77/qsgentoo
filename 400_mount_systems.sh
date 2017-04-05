@@ -6,6 +6,7 @@ ${sudo_cmd} mount --rbind /sys ${new_root}/sys
 ${sudo_cmd} mount --make-rslave ${new_root}/sys
 ${sudo_cmd} mount --rbind /dev ${new_root}/dev
 ${sudo_cmd} mount --make-rslave ${new_root}/dev
+${sudo_cmd} mount --rbind / ${new_root}/mnt
 
 if [ $mount_distfiles = 1 ] ; then
     [ ! -d ${new_root}/usr/portage/distfiles ] && ${sudo_cmd} mkdir -p ${new_root}/usr/portage/distfiles

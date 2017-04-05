@@ -13,4 +13,4 @@ fi
 ${sudo_cmd} umount -l ${new_root}/proc
 ${sudo_cmd} umount -l ${new_root}/sys
 ${sudo_cmd} umount -l ${new_root}/dev{/shm,/pts,}
-
+${sudo_cmd} umount -l ${new_root}/mnt
