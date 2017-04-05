@@ -52,6 +52,11 @@ case $kernel in
     ;;
     "livecd" )
 	emerge -q dracut
+	mkdir -p /lib64/modules
+	cp -r /mnt/lib64/modules/$(uname -r)/ /lib64/modules/
+	cp /mnt/mnt/cdrom/isolinux/gentoo /boot/vmlinuz-$(uname -r)
+	cp /mnt/mnt/cdrom/isolinux/System-gentoo.map /boot/System.map-$(uname -r)
+	dracut --kver $(uname -r)
     ;;
     * )
 	emerge -q virtual/linux-sources dracut
