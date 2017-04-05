@@ -6,9 +6,6 @@ if [ ! ${portage_zip} = "" ] ; then
     ${sudo_cmd} wget -q ${portage_zip}
     ${sudo_cmd} unzip -q stable.zip
     ${sudo_cmd} mv gentoo-stable portage
-    pushd portage >/dev/null
-    ${sudo_cmd} git pull
-    popd >/dev/null
     ${sudo_cmd} rm stable.zip
     popd >/dev/null
 else
