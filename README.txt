@@ -1,5 +1,8 @@
 # qsgentoo
 Quick Start Gentoo script
+
+Watch video https://youtu.be/CSY0NWl1Hro
+
 1. boot from gentoo livecd
 2. wget https://github.com/ppv77/qsgentoo/archive/v<release>.tar.gz
 3. tar xzf v<release>.tar.gz
