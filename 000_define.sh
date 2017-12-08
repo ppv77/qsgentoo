@@ -3,7 +3,7 @@
 #Don't delete if you wont use this as Stage4
 
 #Only for development host
-devel=1
+devel=0
 #Only for tester host
 tester=0
 
