@@ -14,5 +14,6 @@ Watch video https://youtu.be/CSY0NWl1Hro
 9. login root:root
 10. eix-sync
 11. emerge -uND @world
-12. feel nice
+12. If used precompiled kernel, emerge, compile and install Your kernel.
+13. feel nice
 
