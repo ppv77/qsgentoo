@@ -27,9 +27,8 @@ Stage3_file="stage3-amd64-201*.tar.bz2"
 #------------------------------------
 #where download portage? or get from git if not defined (warning!!! no git on gentoo-livecd)
 portage_zip=""
-#portage_zip="https://github.com/gentoo-mirror/gentoo/archive/stable.zip"
-portage_zip="http://10.10.104.122/for_stage4/stable.zip"
-[ $devel = 1 ] && portage_zip="http://localhost/for_stage4/stable.zip"
+#portage_zip="http://10.10.104.122/for_stage4/portage.tar.bz2"
+[ $devel = 1 ] && portage_zip="http://localhost/for_stage4/portage.tar.bz2"
 
 #---------------------------------------------------
 #path to mount new rootfs
