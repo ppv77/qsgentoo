@@ -14,19 +14,19 @@ do
     sleep 5
     case "${mp[fs,$i]}" in
 	"ext4" ) 
-	    ${sudo_cmd} mkfs.ext4 -F -q ${main_device}$i
+	    ${sudo_cmd} mkfs.ext4 -F ${quiet} ${main_device}$i
 	    ;;
 	"reiserfs" ) 
-	    ${sudo_cmd} mkfs.reiserfs -q -f ${main_device}$i
+	    ${sudo_cmd} mkfs.reiserfs ${quiet} -f ${main_device}$i
 	    ;;
 	"xfs" ) 
-	    ${sudo_cmd} mkfs.xfs -f -q ${main_device}$i
+	    ${sudo_cmd} mkfs.xfs -f ${quiet} ${main_device}$i
 	    ;;
 	"ext3" ) 
-	    ${sudo_cmd} mkfs.ext3 -F -q ${main_device}$i
+	    ${sudo_cmd} mkfs.ext3 -F ${quiet} ${main_device}$i
 	    ;;
 	"ext2" ) 
-	    ${sudo_cmd} mkfs.ext2 -F -q ${main_device}$i
+	    ${sudo_cmd} mkfs.ext2 -F ${quiet} ${main_device}$i
 	    ;;
 	"swap" )
 	    ${sudo_cmd} mkswap -f ${main_device}$i

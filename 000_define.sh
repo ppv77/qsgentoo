@@ -2,11 +2,13 @@
 #This is config file for Quick Start Gentoo scripts https://github.com/ppv77/qsgentoo
 #Don't delete if you wont use this as Stage4
 
+devel=0
 debug=0
+[ $debug = 1 ] && quiet=""||quiet="-q"
+
 #----------------------------------------------------
 #path to sudo or no sudo
-#sudo_cmd="/usr/bin/sudo"
-sudo_cmd=""
+[ $devel = 1 ] && sudo_cmd="/usr/bin/sudo" || sudo_cmd=""
 
 #--------------------------------------------------
 #where script find files for chroot 
@@ -14,24 +16,27 @@ chroot_files="chroot_files"
 
 #----------------------------------------------
 #gentoo stage uri and file
-Stage3_uri="http://distfiles.gentoo.org/releases/amd64/autobuilds/current-install-amd64-minimal/"
-#Stage3_uri="http://mirror.yandex.ru/gentoo-distfiles/releases/amd64/autobuilds/current-install-amd64-minimal/"
+Stage3_uri="http://distfiles.gentoo.org/releases/amd64/autobuilds/current-stage3-amd64/"
+#Stage3_uri="http://mirror.yandex.ru/gentoo-distfiles/releases/amd64/autobuilds/current-stage3-amd64/"
 #Stage3_uri="http://10.10.104.122/for_stage4/"
-#Stage3_file="stage3-amd64-201*.tar.bz2"
-Stage3_file="stage3-amd64-nomultilib-*.tar.bz2"
+[ $devel = 1 ] && Stage3_uri="http://localhost/for_stage4/"
+
+Stage3_file="stage3-amd64-201*.tar.bz2"
+#Stage3_file="stage3-amd64-nomultilib-*.tar.bz2"
 
 #------------------------------------
 #where download portage? or get from git if not defined (warning!!! no git on gentoo-livecd)
-#portage_zip=""
-portage_zip="https://github.com/gentoo-mirror/gentoo/archive/stable.zip"
-#portage_zip="http://10.10.104.122/for_stage4/stable.zip"
+portage_zip=""
+#portage_zip="https://github.com/gentoo-mirror/gentoo/archive/stable.zip"
+portage_zip="http://10.10.104.122/for_stage4/stable.zip"
+[ $devel = 1 ] && portage_zip="http://localhost/for_stage4/stable.zip"
 
 #---------------------------------------------------
 #path to mount new rootfs
 new_root="/mnt/gentoo"
 
 #!!!!!!!!!!!!!!!!
-main_device="/dev/sda"
+main_device="/dev/sdb"
 #!!!!!!!!!!!!!!!!!!!!!!
 #mountpoints define-------------------------------------------------------------------------------------------
 #this for 40G disk
@@ -71,24 +76,28 @@ mp[fs,2]="ext4"
 
 #-------------------------------------------------------------------------------------------------------
 #makeopts for emerge and kernel compile = cpu count
-makeopts="-j17"
+makeopts="-j3"
+[ $devel = 1 ] && makeopts="-j17"
 
 #--------------------------------------------------
 #we already have distfiles? if livecd - no. new files will be stored
 mount_distfiles=0
-#distfiles_path="/var/calculate/remote/distfiles"
+[ $devel = 1 ] && mount_distfiles=1
 distfiles_path="/var/www/localhost/for_stage4/distfiles"
 
 #-----------------------------------------------------
 #use and make pkg
 use_packages=0
+[ $devel = 1 ] && use_packages=1
+#binhost="http://some-url"
 #if we have pkgs
-binhost="http://10.10.104.122/for_stage4/packages"
+[ $devel = 1 ] && binhost="http://localhost/for_stage4/packages"
 
 #we have local pkgs? new files will be stored
 mount_packages=0
-#packages_path="/var/calculate/packages/x86_64"
-packages_path="/var/www/localhost/for_stage4/packages"
+[ $devel = 1 ] && mount_packages=1
+#packages_path="/var/www/localhost/for_stage4/packages"
+[ $devel = 1 ] && packages_path="/var/www/localhost/for_stage4/packages"
 
 #---------------------------------------------------
 #use genkernel?
@@ -97,8 +106,9 @@ packages_path="/var/www/localhost/for_stage4/packages"
 kernel="livecd"
 #use precompiled kernel from url
 #kernel="precompiled"
-precompiled_uri="http://10.10.104.122/for_stage4/"
-precompiled_file="4.9.16.tar.bz2"
+[ $devel = 1 ] && kernel="precompiled"
+[ $devel = 1 ] && precompiled_uri="http://localhost/for_stage4/"
+[ $devel = 1 ] && precompiled_file="4.9.16.tar.bz2"
 #kernel config for non genkernel, or get from /proc/config.gz if no
 #kernel=""
 #kernel="config-photon-os-4.4.8"

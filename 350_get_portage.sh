@@ -3,9 +3,9 @@
 
 if [ ! ${portage_zip} = "" ] ; then
     pushd ${new_root}/usr/ >/dev/null
-    ${sudo_cmd} wget -q ${portage_zip}
-    ${sudo_cmd} unzip -q stable.zip
-    ${sudo_cmd} mv gentoo-stable portage
+    ${sudo_cmd} wget ${quiet} ${portage_zip}
+    ${sudo_cmd} unzip ${quiet} stable.zip
+    ${sudo_cmd} mv gentoo-stable portage/gentoo
     ${sudo_cmd} rm stable.zip
     popd >/dev/null
 else
