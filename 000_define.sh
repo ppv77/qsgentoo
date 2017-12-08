@@ -144,9 +144,11 @@ mk_stage4=0
 distfiles_path="/var/www/localhost/for_stage4/distfiles"
 
 [ $devel = 1 ] && use_packages=1
-[ $tester = 1 ] && binhost="http://10.10.104.122/for_stage4/packages"
-#if we have local pkgs
 [ $devel = 1 ] && binhost="http://localhost/for_stage4/packages"
+
+[ $tester = 1 ] && use_packages=1
+[ $tester = 1 ] && binhost="http://10.10.104.122/for_stage4/packages"
+
 
 
 #we have local pkgs? new files will be stored
