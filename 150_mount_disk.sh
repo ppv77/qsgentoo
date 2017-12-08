@@ -1,6 +1,7 @@
 #!/bin/bash 
 . 000_define.sh
 
+printf "Mount disks.\n"
 
 #mount root
 ${sudo_cmd} mkdir -p /mnt/gentoo

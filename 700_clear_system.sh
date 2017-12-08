@@ -1,6 +1,8 @@
 #!/bin/bash 
 . 000_define.sh
 
+printf "Clear system.\n"
+
 ${sudo_cmd} rm ${new_root}/in_chroot_task.sh
 ${sudo_cmd} rm ${new_root}/000_define.sh
 [ -f ${new_root}/.config ] && ${sudo_cmd} rm ${new_root}/.config

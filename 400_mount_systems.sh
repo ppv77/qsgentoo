@@ -1,6 +1,8 @@
 #!/bin/bash
 . 000_define.sh
 
+printf "Mount systems.\n"
+
 ${sudo_cmd} mount -t proc /proc ${new_root}/proc
 ${sudo_cmd} mount --rbind /sys ${new_root}/sys
 ${sudo_cmd} mount --make-rslave ${new_root}/sys

@@ -1,6 +1,8 @@
 #!/bin/bash 
 . 000_define.sh
 
+printf "Prepare fstab.\n"
+
 ${sudo_cmd} mv ${new_root}/etc/fstab  ${new_root}/etc/fstab.default
 ${sudo_cmd} truncate --size 0 ${new_root}/etc/fstab
 

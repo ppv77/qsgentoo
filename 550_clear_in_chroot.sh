@@ -1,6 +1,8 @@
 #!/bin/bash 
 . 000_define.sh
 
+printf "Clean chroot.\n"
+
 ${sudo_cmd} truncate --size 0 ${new_root}/clean.sh
 ${sudo_cmd} chmod +x ${new_root}/clean.sh
 

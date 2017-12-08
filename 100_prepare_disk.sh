@@ -1,6 +1,7 @@
 #!/bin/bash 
 . 000_define.sh
 
+printf "Prepare disks.\n"
 
 read -p "All data on ${main_device} will be removed (y/n):" yn
 [ $yn != "y" ] && exit

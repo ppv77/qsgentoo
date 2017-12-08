@@ -1,6 +1,8 @@
 #!/bin/bash
 . 000_define.sh
 
+printf "Prepare some system config.\n"
+
 ${sudo_cmd} cp 000_define.sh ${new_root}/
 ${sudo_cmd} cp ${chroot_files}/in_chroot_task.sh ${new_root}/
 ${sudo_cmd} cp /etc/resolv.conf ${new_root}/etc/

@@ -1,7 +1,7 @@
 #!/bin/bash 
 . 000_define.sh
 
-
+printf "Prepare world.\n"
 
 printf "dev-vcs/git\n" >>/var/lib/portage/world
 printf "app-portage/eix\n" >>/var/lib/portage/world
@@ -16,29 +16,41 @@ env-update ; . /etc/profile
 emerge ${quiet} -uND --verbose-conflicts @world
 emerge  ${quiet} --depclean
 
+printf "Set Timezone.\n"
+
 printf "Europe/Moscow" >/etc/timezone
 emerge ${quiet} --config sys-libs/timezone-data
+
+printf "Set locale.\n"
 
 [ ! -f "/etc/locale.gen.default" ] && mv /etc/locale.gen /etc/locale.gen.default
 printf "en_US ISO-8859-1\nen_US.UTF-8 UTF-8\n" >/etc/locale.gen
 [ $ru = 1 ] && printf "ru_RU.UTF-8 UTF-8\nru_RU.KOI-8 KOI-8\nru_RU.CP1251 CP1251\nru_RU ISO-8859-5\n" >>/etc/locale.gen
 locale-gen
 eselect locale set en_US.utf8
+
+printf "Convert portage to git.\n"
+
+rm -rf /usr/portage/gentoo
+git clone --depth 1 https://github.com/gentoo-mirror/gentoo.git /usr/portage/gentoo
 env-update ; . /etc/profile
 [ $debug = 1 ] && read -p Enter
 
 
 case $kernel in
     "genkernel" )
+	printf "Compile genkernel.\n"
 	emerge ${quiet} virtual/linux-sources genkernel
 	[ $menuconfig == 1 ] && genkernel --menuconfig --loglevel=4 --install --makeopts=${makeopts} all
 	[ $menuconfig == 0 ] && genkernel --loglevel=4 --install --makeopts=${makeopts} all
     ;;
     "precompiled" )
+	printf "Download precompiled kernel.\n"
 	wget ${quiet} ${precompiled_uri}${precompiled_file}
 	tar xjpf ${precompiled_file} && rm ${precompiled_file}
     ;;
     "livecd" )
+	printf "Using kernel from livecd.\n"
 	emerge ${quiet} dracut
 	mkdir -p /lib64/modules
 	cp -r /mnt/mnt/livecd/lib64/modules/$(uname -r) /lib64/modules/
@@ -47,6 +59,7 @@ case $kernel in
 	dracut --kver $(uname -r)
     ;;
     * )
+	printf "Compile kernel.\n"
 	emerge ${quiet} virtual/linux-sources dracut
 	pushd /usr/src/linux >/dev/null
 	[ -f "/.config" ] && cp /.config /usr/src/linux/
@@ -64,6 +77,8 @@ case $kernel in
 esac
 
 
+printf "Prepare Grub.\n"
+
 printf "GRUB_DISABLE_RECOVERY=true\n" >>/etc/default/grub
 printf "GRUB_DEFAULT=saved\n" >>/etc/default/grub
 printf "GRUB_DISABLE_SUBMENU=y\n" >>/etc/default/grub
@@ -80,6 +95,9 @@ grub-install ${main_device}
 [ $debug = 1 ] && read -p Enter
 grub-mkconfig -o /boot/grub/grub.cfg
 [ $debug = 1 ] && read -p Enter
+
+printf "Set root password root.\n"
+
 echo "root:root"| chpasswd
 
 [ $debug = 1 ] && read -p Enter

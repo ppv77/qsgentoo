@@ -1,5 +1,8 @@
 #!/bin/bash
 . 000_define.sh
+
+printf "Prepare portage.\n"
+
 [ ! -d "${new_root}/etc/portage/repos.conf" ] && ${sudo_cmd} mkdir -p ${new_root}/etc/portage/repos.conf
 [ ! -f "${new_root}/etc/portage/repos.conf/gentoo.conf" ] && ${sudo_cmd} cp ${chroot_files}/gentoo.conf ${new_root}/etc/portage/repos.conf/
 
