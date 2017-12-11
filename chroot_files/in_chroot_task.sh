@@ -31,8 +31,8 @@ eselect locale set en_US.utf8
 
 printf "Convert portage to git.\n"
 
-rm -rf /usr/portage/gentoo
-git clone --depth 1 https://github.com/gentoo-mirror/gentoo.git /usr/portage/gentoo
+rm -rf /usr/portage
+git clone --depth 1 https://github.com/gentoo-mirror/gentoo.git /usr/portage
 env-update ; . /etc/profile
 [ $debug = 1 ] && read -p Enter
 
