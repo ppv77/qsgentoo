@@ -5,14 +5,26 @@ emerge-webrsync ${quiet} ${verbose}
 
 printf "Prepare world.\n"
 
-#printf "dev-vcs/git\n" >>/var/lib/portage/world
-#printf "app-portage/eix\n" >>/var/lib/portage/world
 printf "net-misc/dhcpcd\n" >>/var/lib/portage/world
-printf "sys-fs/e2fsprogs\n" >>/var/lib/portage/world
-printf "sys-fs/reiserfsprogs\n" >>/var/lib/portage/world
-printf "sys-fs/xfsprogs\n" >>/var/lib/portage/world
+
+for (( i=1; i < ${#mp[@]}/4+1; i++ ))
+do
+    case "${mp[fs,$i]}" in
+    "ext4" | "ext2" | "ext3" ) 
+        printf "sys-fs/e2fsprogs\n" >>/var/lib/portage/world
+        ;;
+    "reiserfs" ) 
+	printf "sys-fs/reiserfsprogs\n" >>/var/lib/portage/world
+        ;;
+    "xfs" ) 
+    printf "sys-fs/xfsprogs\n" >>/var/lib/portage/world
+        ;;
+    esac
+done
 printf "sys-boot/grub\n" >>/var/lib/portage/world
 [ $ru = 1 ] && printf "media-fonts/terminus-font\n" >>/var/lib/portage/world
+sort /var/lib/portage/world|uniq >/var/lib/portage/world.new
+mv /var/lib/portage/world.new /var/lib/portage/world
 
 env-update ; . /etc/profile
 emerge ${quiet} ${verbose} -uND --verbose-conflicts @world
@@ -49,7 +61,7 @@ case $kernel in
     "precompiled" )
 	printf "Download precompiled kernel.\n"
 	wget ${quiet} ${precompiled_uri}${precompiled_file}
-	tar xjpf ${precompiled_file} && rm ${precompiled_file}
+	tar ${verbose} -xjpf ${precompiled_file} && rm ${precompiled_file}
     ;;
     "livecd" )
 	printf "Using kernel from livecd.\n"

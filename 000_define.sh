@@ -8,7 +8,7 @@ devel=1
 #!!!WARNING!!!!Only for tester host
 tester=0
 
-debug=1
+debug=0
 
 
 
@@ -26,9 +26,8 @@ Stage3_file="stage3-amd64-nomultilib-*.tar.xz"
 rm_stage3=1
 
 #------------------------------------
-#where download portage? or get from git if not defined (warning!!! no git on gentoo-livecd)
-#portage_zip=""
-#portage_zip="https://github.com/gentoo-mirror/gentoo/archive/stable.zip"
+#where download portage? Not require.
+portage_zip="https://github.com/gentoo-mirror/gentoo/archive/stable.zip"
 
 #---------------------------------------------------
 #path to mount new rootfs
@@ -42,9 +41,10 @@ main_device="/dev/sda"
 # gpt
 #dev		name(mountpoint)	start		end	fs
 #/dev/sdx1	bios_grub		1M		1G	no
-#/dev/sdx2	/boot			1G		2G	ext2
-#/dev/sdx3	swap			2G		4G	swap
-#/dev/sdx4	/			4G		40G	ext4
+#/dev/sdx2	/			1G		20G	ext4
+#/dev/sdx3	/boot			20G		21G	ext2
+#/dev/sdx4	swap			21G		22G	swap
+
 
 declare -A mp
 
@@ -53,25 +53,21 @@ mp[start,1]="1M"
 mp[end,1]="1G"
 mp[fs,1]=""
 
-#mp[mountpoint,2]="/boot"
-#mp[start,2]="1G"
-#mp[end,2]="2G"
-#mp[fs,2]="ext2"
-
-#mp[mountpoint,3]="swap"
-#mp[start,3]="2G"
-#mp[end,3]="4G"
-#mp[fs,3]="swap"
-
-#mp[mountpoint,4]="/"
-#mp[start,4]="4G"
-#mp[end,4]="40G"
-#mp[fs,4]="ext4"
-
 mp[mountpoint,2]="/"
 mp[start,2]="1G"
-mp[end,2]="30G"
+mp[end,2]="20G"
 mp[fs,2]="ext4"
+
+mp[mountpoint,3]="/boot"
+mp[start,3]="20G"
+mp[end,3]="21G"
+mp[fs,3]="ext2"
+
+mp[mountpoint,4]="swap"
+mp[start,4]="21G"
+mp[end,4]="22G"
+mp[fs,4]="swap"
+
 
 #-------------------------------------------------------------------------------------------------------
 #makeopts for emerge and kernel compile = cpu count
@@ -132,8 +128,8 @@ mk_stage4=0
 [ $devel = 1 ] && Stage3_uri="http://localhost/for_stage4/"
 
 #portages
-[ $tester = 1 ] && portage_zip="http://10.10.104.122/for_stage4/stable.zip"
-[ $devel = 1 ] && portage_zip="http://localhost/for_stage4/stable.zip"
+[ $tester = 1 ] && portage_zip="http://10.10.104.122/for_stage4/gentoo-stable.zip"
+[ $devel = 1 ] && portage_zip="http://localhost/for_stage4/gentoo-stable.zip"
 
 #destination
 [ $devel = 1 ] && main_device="/dev/sdb"
