@@ -1,7 +1,7 @@
 #!/bin/bash 
 . 000_define.sh
 
-emerge-webrsync
+emerge-webrsync ${quiet} ${verbose}
 
 printf "Prepare world.\n"
 
@@ -15,8 +15,8 @@ printf "sys-boot/grub\n" >>/var/lib/portage/world
 [ $ru = 1 ] && printf "media-fonts/terminus-font\n" >>/var/lib/portage/world
 
 env-update ; . /etc/profile
-emerge ${quiet} -uND --verbose-conflicts @world
-emerge  ${quiet} --depclean
+emerge ${quiet} ${verbose} -uND --verbose-conflicts @world
+emerge  ${quiet} ${verbose} --depclean
 
 printf "Set Timezone.\n"
 

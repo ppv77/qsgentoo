@@ -85,12 +85,15 @@ use_packages=0
 #---------------------------------------------------
 #use genkernel?
 #kernel="genkernel"
+
 #use precompiled kernel from livecd
 kernel="livecd"
+
 #use precompiled kernel from url
 #kernel="precompiled"
 #precompiled_uri="http://url/"
 #precompiled_file="4.9.16.tar.bz2"
+
 #kernel config for non genkernel, or get from /proc/config.gz if no
 #kernel=""
 #kernel="config-photon-os-4.4.8"
