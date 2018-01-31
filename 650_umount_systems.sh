@@ -5,15 +5,15 @@ printf "Umount systems.\n"
 
 
 if [ $mount_distfiles = 1 ] ; then
-    ${sudo_cmd} umount ${new_root}/usr/portage/distfiles
+    ${sudo_cmd} umount  ${verbose} ${new_root}/usr/portage/distfiles
 fi
 
 if [ $mount_packages = 1 ] ; then
-    ${sudo_cmd} umount ${new_root}/usr/portage/packages
+    ${sudo_cmd} umount  ${verbose} ${new_root}/usr/portage/packages
 fi
 
 
-${sudo_cmd} umount -l ${new_root}/proc
-${sudo_cmd} umount -l ${new_root}/sys
-${sudo_cmd} umount -l ${new_root}/dev{/shm,/pts,}
-${sudo_cmd} umount -l ${new_root}/mnt
+${sudo_cmd} umount -l  ${verbose} ${new_root}/proc
+${sudo_cmd} umount -l  ${verbose} ${new_root}/sys
+${sudo_cmd} umount -l  ${verbose} ${new_root}/dev{/shm,/pts,}
+${sudo_cmd} umount -l  ${verbose} ${new_root}/mnt

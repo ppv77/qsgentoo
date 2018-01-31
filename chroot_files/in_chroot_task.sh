@@ -1,10 +1,12 @@
 #!/bin/bash 
 . 000_define.sh
 
+emerge-webrsync
+
 printf "Prepare world.\n"
 
-printf "dev-vcs/git\n" >>/var/lib/portage/world
-printf "app-portage/eix\n" >>/var/lib/portage/world
+#printf "dev-vcs/git\n" >>/var/lib/portage/world
+#printf "app-portage/eix\n" >>/var/lib/portage/world
 printf "net-misc/dhcpcd\n" >>/var/lib/portage/world
 printf "sys-fs/e2fsprogs\n" >>/var/lib/portage/world
 printf "sys-fs/reiserfsprogs\n" >>/var/lib/portage/world
@@ -29,12 +31,12 @@ printf "en_US ISO-8859-1\nen_US.UTF-8 UTF-8\n" >/etc/locale.gen
 locale-gen
 eselect locale set en_US.utf8
 
-printf "Convert portage to git.\n"
+#printf "Convert portage to git.\n"
 
-rm -rf /usr/portage
-git clone --depth 1 https://github.com/gentoo-mirror/gentoo.git /usr/portage
-env-update ; . /etc/profile
-[ $debug = 1 ] && read -p Enter
+#rm -rf /usr/portage
+#git clone --depth 1 https://github.com/gentoo-mirror/gentoo.git /usr/portage
+#env-update ; . /etc/profile
+#[ $debug = 1 ] && read -p Enter
 
 
 case $kernel in

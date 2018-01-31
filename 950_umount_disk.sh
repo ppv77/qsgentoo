@@ -3,5 +3,5 @@
 
 printf "Umount disks.\n"
 
-${sudo_cmd} umount -R ${new_root}
+${sudo_cmd} umount  ${verbose} -R ${new_root}
 

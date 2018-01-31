@@ -1,13 +1,14 @@
 #!/bin/bash
+exec &> >(tee -i -a logfile)
 #This is config file for Quick Start Gentoo scripts https://github.com/ppv77/qsgentoo
 #Don't delete if you wont use this as Stage4
 
-#Only for development host
-devel=0
-#Only for tester host
+#!!!WARNING!!!!Only for development host
+devel=1
+#!!!WARNING!!!!Only for tester host
 tester=0
 
-debug=0
+debug=1
 
 
 
@@ -19,22 +20,23 @@ chroot_files="chroot_files"
 #gentoo stage uri and file
 Stage3_uri="http://distfiles.gentoo.org/releases/amd64/autobuilds/current-stage3-amd64/"
 #Stage3_uri="http://mirror.yandex.ru/gentoo-distfiles/releases/amd64/autobuilds/current-stage3-amd64/"
-
-Stage3_file="stage3-amd64-201*.tar.bz2"
-#Stage3_file="stage3-amd64-nomultilib-*.tar.bz2"
+#Stage3_file="stage3-amd64-201*.tar.xz"
+Stage3_file="stage3-amd64-nomultilib-*.tar.xz"
+#remove stage3 file after unpack?
+rm_stage3=1
 
 #------------------------------------
 #where download portage? or get from git if not defined (warning!!! no git on gentoo-livecd)
 #portage_zip=""
-portage_zip="https://github.com/gentoo-mirror/gentoo/archive/stable.zip"
+#portage_zip="https://github.com/gentoo-mirror/gentoo/archive/stable.zip"
 
 #---------------------------------------------------
 #path to mount new rootfs
 new_root="/mnt/gentoo"
 
-#!!!!!!!!!!!!!!!!
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!WARNING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!WARNING!!!!!!!!!!!!!!!!!!WARNING!!!!!!!!!!!!!!!!WARNING!!!!!!!!!!!WARNING!!!!!!!!!!!!!WARNING!!!!!!!!!!!!!!!!!!1
 main_device="/dev/sda"
-#!!!!!!!!!!!!!!!!!!!!!!
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 #mountpoints define-------------------------------------------------------------------------------------------
 #this for 40G disk
 # gpt
@@ -116,24 +118,25 @@ mk_stage4=0
 #############################################################################
 ############################################################################
 
-[ $debug = 1 ] && quiet=""||quiet="-q"
+[ $debug = 1 ] && verbose="-v" || quiet="-q"
 
 #----------------------------------------------------
 #path to sudo or no sudo
 [ $devel = 1 ] && sudo_cmd="/usr/bin/sudo" || sudo_cmd=""
 
+#stage uri
 [ $tester = 1 ] && Stage3_uri="http://10.10.104.122/for_stage4/"
 [ $devel = 1 ] && Stage3_uri="http://localhost/for_stage4/"
 
-
+#portages
 [ $tester = 1 ] && portage_zip="http://10.10.104.122/for_stage4/stable.zip"
 [ $devel = 1 ] && portage_zip="http://localhost/for_stage4/stable.zip"
 
-
+#destination
 [ $devel = 1 ] && main_device="/dev/sdb"
 [ $tester = 1 ] && main_device="/dev/sda"
 
-
+#CPUs
 [ $devel = 1 ] && makeopts="-j9"
 [ $tester = 1 ] && makeopts="-j17"
 
