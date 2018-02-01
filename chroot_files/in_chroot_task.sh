@@ -85,7 +85,7 @@ case $kernel in
     ;;
     "precompiled" )
 	printf "Download precompiled kernel.\n"
-	wget ${quiet} ${precompiled_uri}${precompiled_file}
+	wget -nv ${quiet} ${precompiled_uri}${precompiled_file}
 	tar ${verbose} -xjpf ${precompiled_file} && rm ${precompiled_file}
     ;;
     "livecd" )
