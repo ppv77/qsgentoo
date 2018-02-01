@@ -5,7 +5,6 @@ printf "Clear system.\n"
 
 ${sudo_cmd} rm  ${verbose} ${new_root}/in_chroot_task.sh
 ${sudo_cmd} rm  ${verbose} ${new_root}/000_define.sh
-${sudo_cmd} rm  ${verbose} ${new_root}/logfile
 ${sudo_cmd} cp  ${verbose} 000_define.sh ${new_root}/root
 ${sudo_cmd} cp  ${verbose} logfile ${new_root}/root
 ${sudo_cmd} cp  ${verbose} addon* ${new_root}/root
