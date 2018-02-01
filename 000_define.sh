@@ -113,8 +113,8 @@ mk_stage4=0
 
 
 #------------
-#without portages and kernel sources
-minimal=1
+#rm portages
+rm_portages=1
 
 
 

@@ -115,7 +115,6 @@ case $kernel in
 
 esac
 
-[ $minimal = 1 ] && emerge  ${ask} -c virtual/linux-sources
 
 printf "Prepare Grub.\n"
 

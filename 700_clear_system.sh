@@ -18,6 +18,6 @@ fi
 #${sudo_cmd} rm -Rf ${new_root}/usr/portage/gentoo/*
 ${sudo_cmd} rm  ${verbose} -Rf ${new_root}/usr/portage/distfiles/*
 ${sudo_cmd} rm  ${verbose} -Rf ${new_root}/usr/portage/packages/*
-[ $minimal = 1 ] && ${sudo_cmd} rm  ${verbose} -Rf ${new_root}/usr/portage/*
+[ $rm_portages = 1 ] && ${sudo_cmd} rm  ${verbose} -Rf ${new_root}/usr/portage/*
 
 
