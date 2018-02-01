@@ -1,7 +1,7 @@
 #!/bin/bash 
 . 000_define.sh
 
-emerge-webrsync ${quiet} ${verbose}
+[ $devel = 0 ] && [ $tester = 0 ] && emerge-webrsync ${quiet} ${verbose}
 
 printf "Prepare world.\n"
 

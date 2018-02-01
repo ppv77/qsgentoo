@@ -105,7 +105,7 @@ ru=0
 
 #---------------------
 #rm kernel sources
-rm_linux_sources=0
+rm_linux_sources=1
 
 #--------------------------
 #generate stage4 file?
