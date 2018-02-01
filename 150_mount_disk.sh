@@ -14,7 +14,7 @@ for (( i=1; i < ${#mp[@]}/4+1; i++ ))
 do
     case "${mp[mountpoint,$i]}" in
 	"swap" )
-#	    ${sudo_cmd} swapon ${main_device}$i
+	    ${sudo_cmd} swapon ${verbose} ${main_device}$i
 	    ;;
 	"/" )
 	    ;;

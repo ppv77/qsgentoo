@@ -8,7 +8,8 @@ devel=1
 #!!!WARNING!!!!Only for tester host
 tester=0
 
-debug=0
+#0-2
+verbose_level=2
 
 
 
@@ -117,7 +118,9 @@ mk_stage4=0
 #############################################################################
 ############################################################################
 
-[ $debug = 1 ] && verbose="-v" || quiet="-q"
+debug=0
+[ $verbose_level = 0 ] && quiet="-q"
+[ $verbose_level = 2 ] && debug=1; verbose="-v"
 
 #----------------------------------------------------
 #path to sudo or no sudo
@@ -136,7 +139,7 @@ mk_stage4=0
 [ $tester = 1 ] && main_device="/dev/sda"
 
 #CPUs
-[ $devel = 1 ] && makeopts="-j9"
+[ $devel = 1 ] && makeopts="-j17"
 [ $tester = 1 ] && makeopts="-j17"
 
 
