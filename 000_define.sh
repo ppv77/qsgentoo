@@ -139,7 +139,7 @@ rm_portages=1
 ############################################################################
 
 #!!!WARNING!!!!Only for development host
-devel=1
+devel=0
 #!!!WARNING!!!!Only for tester host
 tester=0
 
