@@ -1,5 +1,4 @@
 #!/bin/bash
-exec &> >(tee -i -a logfile)
 #This is config file for Quick Start Gentoo scripts https://github.com/ppv77/qsgentoo
 #Don't delete if you wont use this as Stage4
 
@@ -144,8 +143,11 @@ devel=1
 #!!!WARNING!!!!Only for tester host
 tester=0
 
-#0-2
-verbose_level=2
+#verbose="-v"
+ask="-a"
+debug=0
+#quiet="-q"
+
 
 #--------------------------------------------------
 #where script find files for chroot 
@@ -156,9 +158,6 @@ soft_level=0
 #[ $minimal = 0 ] && soft_level=1
 #[ $1 = "addons" ] && soft_level=2
 
-debug=0
-[ $verbose_level = 0 ] && quiet="-q"
-[ $verbose_level = 2 ] && debug=1; verbose="-v"; ask="-a"
 
 #----------------------------------------------------
 #path to sudo or no sudo

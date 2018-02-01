@@ -1,3 +1,4 @@
+exec &> >(tee -i -a logfile)
 . 100*
 . 150*
 . 200*
