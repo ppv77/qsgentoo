@@ -1,8 +1,8 @@
 #!/bin/bash 
 . 000_define.sh
 
-#[ $devel = 0 ] && [ $tester = 0 ] && emerge-webrsync ${quiet} ${verbose}
-emerge-webrsync ${quiet} ${verbose}
+[ $devel = 0 ] && [ $tester = 0 ] && emerge-webrsync ${quiet} ${verbose}
+#emerge-webrsync ${quiet} ${verbose}
 
 
 case $kernel in

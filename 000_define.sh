@@ -144,9 +144,9 @@ devel=1
 tester=0
 
 #verbose="-v"
-ask="-a"
+#ask="-a"
 debug=0
-#quiet="-q"
+quiet="-q"
 
 
 #--------------------------------------------------
