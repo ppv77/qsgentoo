@@ -158,7 +158,7 @@ soft_level=0
 
 debug=0
 [ $verbose_level = 0 ] && quiet="-q"
-[ $verbose_level = 2 ] && debug=1; verbose="-v"
+[ $verbose_level = 2 ] && debug=1; verbose="-v"; ask="-a"
 
 #----------------------------------------------------
 #path to sudo or no sudo

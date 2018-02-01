@@ -2,8 +2,8 @@
 . 000_define.sh
 
 eix-sync
-emerge ${verbose} -uND --with-bdeps=y --keep-going @world
+emerge ${verbose} ${ask} -uND --with-bdeps=y --keep-going @world
 dispatch-conf
-emerge ${verbose} @preserved-rebuild
+emerge ${verbose}  ${ask} @preserved-rebuild
 dispatch-conf
-emerge ${verbose} --depclean
+emerge ${verbose}  ${ask} --depclean

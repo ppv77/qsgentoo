@@ -46,8 +46,8 @@ sort /var/lib/portage/world|uniq >/var/lib/portage/world.new
 mv /var/lib/portage/world.new /var/lib/portage/world
 
 env-update ; . /etc/profile
-emerge ${quiet} ${verbose} -uND --verbose-conflicts @world
-emerge  ${quiet} ${verbose} --depclean
+emerge  ${ask} ${quiet} ${verbose} -uND --verbose-conflicts @world
+emerge   ${ask} ${quiet} ${verbose} --depclean
 
 
 #if [ $soft_level > 0 ]; then
@@ -58,7 +58,7 @@ emerge  ${quiet} ${verbose} --depclean
 printf "Set Timezone.\n"
 
 printf "Europe/Moscow" >/etc/timezone
-emerge ${quiet} --config sys-libs/timezone-data
+emerge  ${ask} ${quiet} --config sys-libs/timezone-data
 
 printf "Set locale.\n"
 
@@ -79,7 +79,7 @@ eselect locale set en_US.utf8
 case $kernel in
     "genkernel" )
 	printf "Compile genkernel.\n"
-	emerge ${quiet} virtual/linux-sources genkernel
+	emerge  ${ask} ${quiet} virtual/linux-sources genkernel
 	[ $menuconfig == 1 ] && genkernel --menuconfig --loglevel=4 --install --makeopts=${makeopts} all
 	[ $menuconfig == 0 ] && genkernel --loglevel=4 --install --makeopts=${makeopts} all
     ;;
@@ -90,7 +90,7 @@ case $kernel in
     ;;
     "livecd" )
 	printf "Using kernel from livecd.\n"
-	emerge ${quiet} dracut
+	emerge  ${ask} ${quiet} dracut
 	mkdir -p /lib64/modules
 	cp -r /mnt/mnt/livecd/lib64/modules/$(uname -r) /lib64/modules/
 	cp /mnt/mnt/cdrom/isolinux/gentoo /boot/vmlinuz-$(uname -r)
@@ -99,7 +99,7 @@ case $kernel in
     ;;
     * )
 	printf "Compile kernel.\n"
-	emerge ${quiet} virtual/linux-sources dracut
+	emerge  ${ask} ${quiet} virtual/linux-sources dracut
 	pushd /usr/src/linux >/dev/null
 	[ -f "/.config" ] && cp /.config /usr/src/linux/
 	[ ! -f "/.config" ] && cp  /proc/config.gz /usr/src/linux && gunzip config.gz && mv config .config
@@ -115,7 +115,7 @@ case $kernel in
 
 esac
 
-[ $minimal = 1 ] && emerge -c virtual/linux-sources
+[ $minimal = 1 ] && emerge  ${ask} -c virtual/linux-sources
 
 printf "Prepare Grub.\n"
 
