@@ -3,19 +3,9 @@ exec &> >(tee -i -a logfile)
 #This is config file for Quick Start Gentoo scripts https://github.com/ppv77/qsgentoo
 #Don't delete if you wont use this as Stage4
 
-#!!!WARNING!!!!Only for development host
-devel=1
-#!!!WARNING!!!!Only for tester host
-tester=0
-
-#0-2
-verbose_level=2
 
 
 
-#--------------------------------------------------
-#where script find files for chroot 
-chroot_files="chroot_files"
 
 #----------------------------------------------
 #gentoo stage uri and file
@@ -26,19 +16,28 @@ Stage3_file="stage3-amd64-nomultilib-*.tar.xz"
 #remove stage3 file after unpack?
 rm_stage3=1
 
+
 #------------------------------------
 #where download portage? Not require.
 portage_zip="https://github.com/gentoo-mirror/gentoo/archive/stable.zip"
+
+
 
 #---------------------------------------------------
 #path to mount new rootfs
 new_root="/mnt/gentoo"
 
-#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!WARNING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!WARNING!!!!!!!!!!!!!!!!!!WARNING!!!!!!!!!!!!!!!!WARNING!!!!!!!!!!!WARNING!!!!!!!!!!!!!WARNING!!!!!!!!!!!!!!!!!!1
+
+
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!WARNING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!WARNING!!!!!!!!!!!!!!!!!!WARNING!!!!!!!!!!!!!!!!WARNING!!!!!!!!!!!WARNING!!!!!!!!!!!!!WARNING!!!!!!!!!!!!!!!!!!
 main_device="/dev/sda"
-#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!WARNING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!WARNING!!!!!!!!!!!!!!!!!!WARNING!!!!!!!!!!!!!!!!WARNING!!!!!!!!!!!WARNING!!!!!!!!!!!!!WARNING!!!!!!!!!!!!!!!!!!
+
+
+
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 #mountpoints define-------------------------------------------------------------------------------------------
-#this for 40G disk
+#samle disk
 # gpt
 #dev		name(mountpoint)	start		end	fs
 #/dev/sdx1	bios_grub		1M		1G	no
@@ -113,10 +112,49 @@ rm_linux_sources=0
 mk_stage4=0
 
 
+#------------
+#without portages and kernel sources
+minimal=1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #############################################################################
 ############################################################################
+
+#!!!WARNING!!!!Only for development host
+devel=1
+#!!!WARNING!!!!Only for tester host
+tester=0
+
+#0-2
+verbose_level=2
+
+#--------------------------------------------------
+#where script find files for chroot 
+chroot_files="chroot_files"
+
+soft_level=0
+#[ $minimal = 1 ] && soft_level=0
+#[ $minimal = 0 ] && soft_level=1
+#[ $1 = "addons" ] && soft_level=2
 
 debug=0
 [ $verbose_level = 0 ] && quiet="-q"

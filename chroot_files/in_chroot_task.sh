@@ -5,7 +5,7 @@ emerge-webrsync ${quiet} ${verbose}
 
 printf "Prepare world.\n"
 
-printf "net-misc/dhcpcd\n" >>/var/lib/portage/world
+
 
 for (( i=1; i < ${#mp[@]}/4+1; i++ ))
 do
@@ -23,12 +23,37 @@ do
 done
 printf "sys-boot/grub\n" >>/var/lib/portage/world
 [ $ru = 1 ] && printf "media-fonts/terminus-font\n" >>/var/lib/portage/world
+#if [ $soft_level > 0 ]; then
+#    printf "sys-apps/pciutils\n" >>/var/lib/portage/world
+#    printf "virtual/linux-sources\n" >>/var/lib/portage/world
+#    printf "net-misc/netifrc\n" >>/var/lib/portage/world
+#    printf "sys-kernel/linux-firmware\n" >>/var/lib/portage/world
+#    printf "sys-fs/xfsprogs\n" >>/var/lib/portage/world
+#    printf "sys-fs/jfsutils\n" >>/var/lib/portage/world
+#    printf "sys-fs/dosfstools\n" >>/var/lib/portage/world
+#    printf "sys-fs/btrfs-progs\n" >>/var/lib/portage/world
+#    printf "sys-fs/reiserfsprogs\n" >>/var/lib/portage/world
+#    printf "sys-fs/e2fsprogs\n" >>/var/lib/portage/world
+#    printf "app-admin/syslog-ng\n" >>/var/lib/portage/world
+#    printf "sys-process/cronie\n" >>/var/lib/portage/world
+#    printf "net-misc/dhcpcd\n" >>/var/lib/portage/world
+#    printf "net-dialup/ppp\n" >>/var/lib/portage/world
+#    printf "net-wireless/iw\n" >>/var/lib/portage/world
+#    printf "net-wireless/wpa-supplicant\n" >>/var/lib/portage/world
+#fi
+
 sort /var/lib/portage/world|uniq >/var/lib/portage/world.new
 mv /var/lib/portage/world.new /var/lib/portage/world
 
 env-update ; . /etc/profile
 emerge ${quiet} ${verbose} -uND --verbose-conflicts @world
 emerge  ${quiet} ${verbose} --depclean
+
+
+#if [ $soft_level > 0 ]; then
+#    rc-update add syslog-ng default
+#    rc-update add cronie default
+#fi
 
 printf "Set Timezone.\n"
 
@@ -90,6 +115,7 @@ case $kernel in
 
 esac
 
+[ $minimal = 1 ] && emerge -c virtual/linux-sources
 
 printf "Prepare Grub.\n"
 
