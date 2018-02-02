@@ -16,9 +16,7 @@ Stage3_file="stage3-amd64-nomultilib-*.tar.xz"
 rm_stage3=1
 
 
-#------------------------------------
-#where download portage? Not require.
-portage_zip="https://github.com/gentoo-mirror/gentoo/archive/stable.zip"
+
 
 
 
@@ -168,6 +166,9 @@ soft_level=0
 [ $devel = 1 ] && Stage3_uri="http://localhost/for_stage4/"
 
 #portages
+#------------------------------------
+#where download portage? Not require.
+#portage_zip="https://github.com/gentoo-mirror/gentoo/archive/stable.zip"
 [ $tester = 1 ] && portage_zip="http://10.10.104.122/for_stage4/gentoo-stable.zip"
 [ $devel = 1 ] && portage_zip="http://localhost/for_stage4/gentoo-stable.zip"
 
