@@ -76,19 +76,22 @@ use_packages=0
 #binhost="some-url"
 
 #---------------------------------------------------
-#use genkernel?(recomended)
-kernel="genkernel"
+#get kernel config from booted system  /proc/config.gz (recomended)
+kernel=""
 
-#use precompiled kernel from livecd(very fast)
+#use precompiled kernel from livecd (very fast)
 #kernel="livecd"
+
+#use genkernel? (warning)
+#kernel="genkernel"
 
 #use precompiled kernel from url
 #kernel="precompiled"
 #precompiled_uri="http://url/"
 #precompiled_file="4.9.16.tar.bz2"
 
-#kernel config for non genkernel, or get from /proc/config.gz if no
-#kernel=""
+
+#kernel config from qsgentoo
 #kernel="config-photon-os-4.4.8"
 #kernel="config-esx-minimal-4.9.16"
 #kernel="config-gentoo-livecd-4.9.16"
