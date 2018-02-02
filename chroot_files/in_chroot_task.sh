@@ -32,7 +32,7 @@ case $kernel in
 	pushd /usr/src/linux >/dev/null
 	[ -f "/.config" ] && cp /.config /usr/src/linux/
 	[ ! -f "/.config" ] && cp  /proc/config.gz /usr/src/linux && gunzip config.gz && mv config .config
-        makeo ${kernel_quiet} lddefconfig
+        make ${kernel_quiet} olddefconfig
 	[ $menuconfig == 1 ] && make menuconfig
         make  ${kernel_quiet} ${makeopts} all
         make  ${kernel_quiet} modules_install
