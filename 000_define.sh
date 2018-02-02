@@ -76,11 +76,11 @@ use_packages=0
 #binhost="some-url"
 
 #---------------------------------------------------
-#use genkernel?
-#kernel="genkernel"
+#use genkernel?(recomended)
+kernel="genkernel"
 
-#use precompiled kernel from livecd
-kernel="livecd"
+#use precompiled kernel from livecd(very fast)
+#kernel="livecd"
 
 #use precompiled kernel from url
 #kernel="precompiled"
@@ -102,7 +102,7 @@ ru=0
 
 #---------------------
 #rm kernel sources
-rm_linux_sources=1
+rm_linux_sources=0
 
 #--------------------------
 #generate stage4 file?
@@ -111,7 +111,7 @@ mk_stage4=0
 
 #------------
 #rm portages
-rm_portages=1
+rm_portages=0
 
 
 
@@ -137,7 +137,7 @@ rm_portages=1
 ############################################################################
 
 #!!!WARNING!!!!Only for development host
-devel=1
+devel=0
 #!!!WARNING!!!!Only for tester host
 tester=0
 
