@@ -148,7 +148,7 @@ tester=0
 #ask="-a"
 debug=0
 quiet="-q"
-
+kernel_quiet="-s"
 
 #--------------------------------------------------
 #where script find files for chroot 

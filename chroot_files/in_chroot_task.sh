@@ -32,13 +32,13 @@ case $kernel in
 	pushd /usr/src/linux >/dev/null
 	[ -f "/.config" ] && cp /.config /usr/src/linux/
 	[ ! -f "/.config" ] && cp  /proc/config.gz /usr/src/linux && gunzip config.gz && mv config .config
-        make olddefconfig
+        makeo ${kernel_quiet} lddefconfig
 	[ $menuconfig == 1 ] && make menuconfig
-        make ${makeopts} all
-        make modules_install
-        make install
+        make  ${kernel_quiet} ${makeopts} all
+        make  ${kernel_quiet} modules_install
+        make  ${kernel_quiet} install
         sleep 10
-	dracut --kver $(make kernelrelease) --force
+	dracut ${quiet} --kver $(make kernelrelease) --force
         popd >/dev/null
     ;;
 
