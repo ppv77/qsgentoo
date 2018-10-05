@@ -67,8 +67,9 @@ mp[fs,4]="swap"
 
 
 #-------------------------------------------------------------------------------------------------------
-#makeopts for emerge and kernel compile = cpu count
-makeopts="-j3"
+#makeopts for emerge and kernel compile = cpu count+1
+cpus=$(grep -c process /proc/cpuinfo)
+makeopts="-j$(($cpus+1))"
 
 #-----------------------------------------------------
 #use and make pkg
