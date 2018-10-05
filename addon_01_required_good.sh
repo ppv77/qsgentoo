@@ -12,7 +12,8 @@ sort /var/lib/portage/world|uniq >/var/lib/portage/world.new
 mv /var/lib/portage/world.new /var/lib/portage/world
 
 . addon_update_world.sh
-
+#eix bug
+chown portage /var/cache/eix
 
 
 
