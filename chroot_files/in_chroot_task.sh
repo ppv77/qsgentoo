@@ -6,12 +6,6 @@
 
 
 case $kernel in
-    "genkernel" )
-	printf "Compile genkernel.\n"
-	emerge  ${ask} ${quiet} virtual/linux-sources genkernel
-	[ $menuconfig == 1 ] && genkernel --menuconfig --loglevel=4 --install --makeopts=${makeopts} all
-	[ $menuconfig == 0 ] && genkernel --loglevel=4 --install --makeopts=${makeopts} all
-    ;;
     "precompiled" )
 	printf "Download precompiled kernel.\n"
 	wget -nv ${quiet} ${precompiled_uri}${precompiled_file}

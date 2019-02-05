@@ -10,8 +10,8 @@
 #gentoo stage uri and file
 Stage3_uri="http://distfiles.gentoo.org/releases/amd64/autobuilds/current-stage3-amd64/"
 #Stage3_uri="http://mirror.yandex.ru/gentoo-distfiles/releases/amd64/autobuilds/current-stage3-amd64/"
-Stage3_file="stage3-amd64-201*.tar.xz"
-#Stage3_file="stage3-amd64-nomultilib-*.tar.xz"
+#Stage3_file="stage3-amd64-201*.tar.xz"
+Stage3_file="stage3-amd64-nomultilib-*.tar.xz"
 
 #remove stage3 file after unpack?
 rm_stage3=1
@@ -87,8 +87,6 @@ kernel=""
 #use precompiled kernel from livecd (very fast)
 #kernel="livecd"
 
-#use genkernel? (warning)
-#kernel="genkernel"
 
 #use precompiled kernel from url
 #kernel="precompiled"
