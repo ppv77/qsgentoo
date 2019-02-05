@@ -66,10 +66,10 @@ use_packages=0
 
 #---------------------------------------------------
 #get kernel config from booted system  /proc/config.gz (recomended)
-kernel=""
+#kernel=""
 #or
 #use precompiled kernel from livecd (very fast)
-#kernel="livecd"
+kernel="livecd"
 #or
 #use precompiled kernel from url
 #kernel="precompiled"
