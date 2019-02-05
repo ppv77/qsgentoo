@@ -3,29 +3,6 @@
 #Don't delete if you wont use this as Stage4
 
 
-
-
-
-#----------------------------------------------
-#gentoo stage uri and file
-Stage3_uri="http://distfiles.gentoo.org/releases/amd64/autobuilds/current-stage3-amd64/"
-#Stage3_uri="http://mirror.yandex.ru/gentoo-distfiles/releases/amd64/autobuilds/current-stage3-amd64/"
-#Stage3_file="stage3-amd64-201*.tar.xz"
-Stage3_file="stage3-amd64-nomultilib-*.tar.xz"
-
-#remove stage3 file after unpack?
-rm_stage3=1
-
-
-
-
-
-#---------------------------------------------------
-#path to mount new rootfs
-new_root="/mnt/gentoo"
-
-
-
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!WARNING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!WARNING!!!!!!!!!!!!!!!!!!WARNING!!!!!!!!!!!!!!!!WARNING!!!!!!!!!!!WARNING!!!!!!!!!!!!!WARNING!!!!!!!!!!!!!!!!!!
 main_device="/dev/sda"
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!WARNING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!WARNING!!!!!!!!!!!!!!!!!!WARNING!!!!!!!!!!!!!!!!WARNING!!!!!!!!!!!WARNING!!!!!!!!!!!!!WARNING!!!!!!!!!!!!!!!!!!
@@ -66,10 +43,17 @@ mp[end,4]="22G"
 mp[fs,4]="swap"
 
 
-#-------------------------------------------------------------------------------------------------------
-#makeopts for emerge and kernel compile = cpu count+1
-cpus=$(grep -c process /proc/cpuinfo)
-makeopts="-j$(($cpus+1))"
+
+#----------------------------------------------
+#gentoo stage uri and file
+Stage3_uri="http://distfiles.gentoo.org/releases/amd64/autobuilds/current-stage3-amd64/"
+#or
+#Stage3_uri="http://mirror.yandex.ru/gentoo-distfiles/releases/amd64/autobuilds/current-stage3-amd64/"
+
+#----------------------------------------------
+#Stage3_file="stage3-amd64-201*.tar.xz"
+#or
+Stage3_file="stage3-amd64-nomultilib-*.tar.xz"
 
 #--------------------------------------
 #add some USE
@@ -83,17 +67,15 @@ use_packages=0
 #---------------------------------------------------
 #get kernel config from booted system  /proc/config.gz (recomended)
 kernel=""
-
+#or
 #use precompiled kernel from livecd (very fast)
 #kernel="livecd"
-
-
+#or
 #use precompiled kernel from url
 #kernel="precompiled"
 #precompiled_uri="http://url/"
 #precompiled_file="4.9.16.tar.bz2"
-
-
+#or
 #kernel config from qsgentoo
 #kernel="config-photon-os-4.4.8"
 #kernel="config-esx-minimal-4.9.16"
@@ -110,10 +92,13 @@ ru=0
 #rm kernel sources
 rm_linux_sources=0
 
+#----------------------
+#remove stage3 file after unpack?
+rm_stage3=1
+
 #--------------------------
 #generate stage4 file?
 mk_stage4=1
-
 
 #------------
 #rm portages
@@ -141,6 +126,15 @@ rm_portages=0
 
 #############################################################################
 ############################################################################
+
+#---------------------------------------------------
+#path to mount new rootfs
+new_root="/mnt/gentoo"
+
+#-------------------------------------------------------------------------------------------------------
+#makeopts for emerge and kernel compile = cpu count+1
+cpus=$(grep -c process /proc/cpuinfo)
+makeopts="-j$(($cpus+1))"
 
 #!!!WARNING!!!!Only for development host
 devel=1
