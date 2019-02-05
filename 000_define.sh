@@ -76,10 +76,8 @@ kernel=""
 #precompiled_uri="http://url/"
 #precompiled_file="4.9.16.tar.bz2"
 #or
-#kernel config from qsgentoo
-#kernel="config-photon-os-4.4.8"
+#kernel config from some qsgentoo files
 #kernel="config-esx-minimal-4.9.16"
-#kernel="config-gentoo-livecd-4.9.16"
 
 #do menuconfig?
 menuconfig=0
