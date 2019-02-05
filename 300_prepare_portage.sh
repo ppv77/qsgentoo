@@ -13,7 +13,7 @@ printf "Prepare portage.\n"
 [ ! -d "${new_root}/etc/portage/make.conf" ] && ${sudo_cmd} mkdir ${verbose} -p ${new_root}/etc/portage/make.conf
 [ ! -f "${new_root}/etc/portage/make.conf/make.conf.default" ] && ${sudo_cmd} mv ${verbose} ${new_root}/etc/portage/make.conf.default ${new_root}/etc/portage/make.conf/make.conf.default
 printf 'MAKEOPTS="'$makeopts'"\n' | ${sudo_cmd} tee  ${new_root}/etc/portage/make.conf/makeopts >/dev/null
-
+printf 'USE="'$use_flags'"\n' | ${sudo_cmd} tee  ${new_root}/etc/portage/make.conf/use >/dev/null
 
 
 

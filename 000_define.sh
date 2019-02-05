@@ -12,9 +12,9 @@ Stage3_uri="http://distfiles.gentoo.org/releases/amd64/autobuilds/current-stage3
 #Stage3_uri="http://mirror.yandex.ru/gentoo-distfiles/releases/amd64/autobuilds/current-stage3-amd64/"
 Stage3_file="stage3-amd64-201*.tar.xz"
 #Stage3_file="stage3-amd64-nomultilib-*.tar.xz"
+
 #remove stage3 file after unpack?
 rm_stage3=1
-
 
 
 
@@ -71,6 +71,10 @@ mp[fs,4]="swap"
 cpus=$(grep -c process /proc/cpuinfo)
 makeopts="-j$(($cpus+1))"
 
+#--------------------------------------
+#add some USE
+use_flags="openssl"
+
 #-----------------------------------------------------
 #use and make pkg
 use_packages=0
@@ -110,7 +114,7 @@ rm_linux_sources=0
 
 #--------------------------
 #generate stage4 file?
-mk_stage4=0
+mk_stage4=1
 
 
 #------------
@@ -141,7 +145,7 @@ rm_portages=0
 ############################################################################
 
 #!!!WARNING!!!!Only for development host
-devel=0
+devel=1
 #!!!WARNING!!!!Only for tester host
 tester=0
 
@@ -181,8 +185,8 @@ soft_level=0
 [ $tester = 1 ] && main_device="/dev/sda"
 
 #CPUs
-[ $devel = 1 ] && makeopts="-j17"
-[ $tester = 1 ] && makeopts="-j17"
+#[ $devel = 1 ] && makeopts="-j17"
+#[ $tester = 1 ] && makeopts="-j17"
 
 
 #--------------------------------------------------
@@ -206,7 +210,7 @@ mount_packages=0
 [ $devel = 1 ] && packages_path="/var/www/localhost/for_stage4/packages"
 
 
-[ $devel = 1 ] && kernel="precompiled"
+#[ $devel = 1 ] && kernel="precompiled"
 [ $devel = 1 ] && precompiled_uri="http://localhost/for_stage4/"
 [ $devel = 1 ] && precompiled_file="4.9.16.tar.bz2"
 
