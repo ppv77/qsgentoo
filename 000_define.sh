@@ -19,28 +19,43 @@ main_device="/dev/sda"
 #/dev/sdx3	/boot			20G		21G	ext2
 #/dev/sdx4	swap			21G		22G	swap
 
+#partitions
+declare -A pt
+pt[type,1]="primary"
+pt[set,1]="bios_grub"
+pt[start,1]="1M"
+pt[end,1]="3M"
+pt[fs,1]=""
 
+pt[type,2]="primary"
+pt[set,2]="boot"
+pt[start,2]="3M"
+pt[end,2]="1G"
+pt[fs,2]="ext2"
+
+pt[type,3]="primary"
+pt[set,3]="lvm"
+pt[start,3]="1G"
+pt[end,3]="100%"
+pt[fs,3]="lvm"
+
+#lvm volumes
+declare -A lv
+lv[name,1]="swap"
+lv[size,1]="-L2G"
+lv[fs,1]="swap"
+
+lv[name,2]="rootfs"
+lv[size,2]="-l100%FREE"
+lv[fs,2]="ext4"
+
+#mountpoint
 declare -A mp
-
-mp[mountpoint,1]="bios_grub"
+mp[mountpoint,1]=""
 mp[start,1]="1M"
 mp[end,1]="1G"
 mp[fs,1]=""
 
-mp[mountpoint,2]="/"
-mp[start,2]="1G"
-mp[end,2]="20G"
-mp[fs,2]="ext4"
-
-mp[mountpoint,3]="/boot"
-mp[start,3]="20G"
-mp[end,3]="21G"
-mp[fs,3]="ext2"
-
-mp[mountpoint,4]="swap"
-mp[start,4]="21G"
-mp[end,4]="22G"
-mp[fs,4]="swap"
 
 
 
@@ -135,7 +150,7 @@ cpus=$(grep -c process /proc/cpuinfo)
 makeopts="-j$(($cpus+1))"
 
 #!!!WARNING!!!!Only for development host
-devel=0
+devel=1
 #!!!WARNING!!!!Only for tester host
 tester=0
 
