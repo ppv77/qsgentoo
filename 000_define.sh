@@ -135,7 +135,7 @@ cpus=$(grep -c process /proc/cpuinfo)
 makeopts="-j$(($cpus+1))"
 
 #!!!WARNING!!!!Only for development host
-devel=1
+devel=0
 #!!!WARNING!!!!Only for tester host
 tester=0
 
@@ -174,9 +174,6 @@ soft_level=0
 [ $devel = 1 ] && main_device="/dev/sdb"
 [ $tester = 1 ] && main_device="/dev/sda"
 
-#CPUs
-#[ $devel = 1 ] && makeopts="-j17"
-#[ $tester = 1 ] && makeopts="-j17"
 
 
 #--------------------------------------------------
