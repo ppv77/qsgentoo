@@ -12,7 +12,7 @@ done
 
 for (( i=1; i < ${#lv[@]}/4+1; i++ ))
 do
-    [ "${lv[mp,$i]}" = "/" ] && ${sudo_cmd} mount ${verbose}  "/dev/mapper/${vg_name}-${lv[name,$i]}" "${new_root}${lv[mp,$i]}"
+    [ "${lv[mp,$i]}" = "/" ] && ${sudo_cmd} mount ${verbose}  "/dev/${vg_name}/${lv[name,$i]}" "${new_root}${lv[mp,$i]}"
 done
 
 
@@ -34,6 +34,6 @@ do
     [ "${lv[mp,$i]}" = "" ] && continue
     [ "${lv[mp,$i]}" = "swap" ] && continue
     [ ! -d ${new_root}${lv[mp,$i]} ] && ${sudo_cmd} mkdir  ${verbose} -p ${new_root}${lv[mp,$i]}
-    ${sudo_cmd} mount ${verbose}  "/dev/mapper/${vg_name}-${lv[name,$i]}" "${new_root}${lv[mp,$i]}"
+    ${sudo_cmd} mount ${verbose}  "/dev/${vg_name}/${lv[name,$i]}" "${new_root}${lv[mp,$i]}"
 done
 

@@ -37,6 +37,7 @@ function makefs(){
 printf "Prepare disks.\n"
 read -p "All data on ${main_device} will be removed (y/n):" yn
 [ $yn != "y" ] && exit
+${sudo_cmd} rc-service lvmetad stop ${quiet}
 ${sudo_cmd} dmsetup remove_all
 ${sudo_cmd} partx -u ${main_device}
 ${sudo_cmd} sgdisk --clear ${main_device}
