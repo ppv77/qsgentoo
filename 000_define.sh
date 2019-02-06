@@ -112,7 +112,7 @@ rm_stage3=1
 
 #--------------------------
 #generate stage4 file?
-mk_stage4=1
+mk_stage4=0
 
 #------------
 #rm portages
