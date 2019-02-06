@@ -5,16 +5,12 @@ printf "Prepare disks.\n"
 
 read -p "All data on ${main_device} will be removed (y/n):" yn
 [ $yn != "y" ] && exit
-printf "a1\n"
+${sudo_cmd} dmsetup remove_all
 ${sudo_cmd} partx -u ${main_device}
-printf "a2\n"
 ${sudo_cmd} sgdisk --clear ${main_device}
-printf "a3\n"
 ${sudo_cmd} parted -a optimal -s ${main_device} mklabel gpt
-printf "a4\n"
 for (( i=1; i < ${#pt[@]}/5+1; i++ ))
 do
-printf "$i\n"
      ${sudo_cmd} parted -a optimal -s ${main_device} mkpart ${pt[type,$i]} ${pt[start,$i]} ${pt[end,$i]}
      ${sudo_cmd} parted -s ${main_device} set $i ${pt[set,$i]} on
     case "${pt[fs,$i]}" in
@@ -53,8 +49,7 @@ for (( i=1; i < ${#lv[@]}/3+1; i++ ))
 do
     ${sudo_cmd} lvcreate ${lv[size,$i]} -n ${lv[name,$i]} gentoo
 done
-
-
+	    ${sudo_cmd} rc-service lvmetad stop -q
 
     
 #    [ "${mp[mountpoint,$i]}" == "/boot" ] && ${sudo_cmd} parted -a optimal -s ${main_device} set $i boot on
