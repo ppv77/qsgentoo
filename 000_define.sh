@@ -56,12 +56,6 @@ lv[size,2]="-l100%FREE"
 lv[fs,2]="ext4"
 lv[mp,2]="/"
 
-##mountpoint
-#declare -A mp
-#mp[mountpoint,1]="/boot"
-#mp[start,1]="1M"
-#mp[end,1]="1G"
-#mp[fs,1]=""
 
 
 

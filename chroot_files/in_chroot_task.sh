@@ -42,20 +42,9 @@ esac
 
 printf "Prepare world.\n"
 
-for (( i=1; i < ${#mp[@]}/4+1; i++ ))
-do
-    case "${mp[fs,$i]}" in
-    "ext4" | "ext2" | "ext3" ) 
-        printf "sys-fs/e2fsprogs\n" >>/var/lib/portage/world
-        ;;
-    "reiserfs" ) 
-	printf "sys-fs/reiserfsprogs\n" >>/var/lib/portage/world
-        ;;
-    "xfs" ) 
-    printf "sys-fs/xfsprogs\n" >>/var/lib/portage/world
-        ;;
-    esac
-done
+printf "sys-fs/e2fsprogs\n" >>/var/lib/portage/world
+printf "sys-fs/reiserfsprogs\n" >>/var/lib/portage/world
+printf "sys-fs/xfsprogs\n" >>/var/lib/portage/world
 printf "sys-boot/grub\n" >>/var/lib/portage/world
 [ $ru = 1 ] && printf "media-fonts/terminus-font\n" >>/var/lib/portage/world
 #if [ $soft_level > 0 ]; then
