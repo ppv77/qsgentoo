@@ -214,7 +214,7 @@ mount_packages=0
 [ $devel = 1 ] && packages_path="/var/www/localhost/for_stage4/packages"
 
 
-#[ $devel = 1 ] && kernel="precompiled"
+[ $devel = 1 ] && kernel="precompiled"
 [ $devel = 1 ] && precompiled_uri="http://localhost/for_stage4/"
 [ $devel = 1 ] && precompiled_file="4.9.16.tar.bz2"
 
