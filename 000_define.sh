@@ -26,35 +26,42 @@ pt[set,1]="bios_grub"
 pt[start,1]="1M"
 pt[end,1]="3M"
 pt[fs,1]=""
+pt[mp,1]=""
 
 pt[type,2]="primary"
 pt[set,2]="boot"
 pt[start,2]="3M"
 pt[end,2]="1G"
 pt[fs,2]="ext2"
+pt[mp,2]="/boot"
 
 pt[type,3]="primary"
 pt[set,3]="lvm"
 pt[start,3]="1G"
 pt[end,3]="100%"
 pt[fs,3]="lvm"
+pt[mp,3]=""
 
 #lvm volumes
 declare -A lv
+#lvm volume group
+vg_name="gentoo"
 lv[name,1]="swap"
 lv[size,1]="-L2G"
 lv[fs,1]="swap"
+lv[mp,1]="swap"
 
 lv[name,2]="rootfs"
 lv[size,2]="-l100%FREE"
 lv[fs,2]="ext4"
+lv[mp,2]="/"
 
-#mountpoint
-declare -A mp
-mp[mountpoint,1]=""
-mp[start,1]="1M"
-mp[end,1]="1G"
-mp[fs,1]=""
+##mountpoint
+#declare -A mp
+#mp[mountpoint,1]="/boot"
+#mp[start,1]="1M"
+#mp[end,1]="1G"
+#mp[fs,1]=""
 
 
 
@@ -148,6 +155,7 @@ new_root="/mnt/gentoo"
 #makeopts for emerge and kernel compile = cpu count+1
 cpus=$(grep -c process /proc/cpuinfo)
 makeopts="-j$(($cpus+1))"
+
 
 #!!!WARNING!!!!Only for development host
 devel=1
