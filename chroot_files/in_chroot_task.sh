@@ -113,7 +113,7 @@ printf 'GRUB_COLOR_NORMAL="white/black"\n' >>/etc/default/grub
 printf 'GRUB_COLOR_HIGHLIGHT="magenta/black"\n' >>/etc/default/grub
 printf "GRUB_GFXPAYLOAD_LINUX=keep\n" >>/etc/default/grub
 printf 'GRUB_FONT="/usr/share/grub/unicode.pf2"\n' >>/etc/default/grub
-printf 'GRUB_CMDLINE_LINUX="dolvm zswap.enabled=1 zswap.compressor=lz4 zswap.max_pool_percent=30 video=1280x1024 vga=791  console=tty1 quiet"\n' >>/etc/default/grub
+printf 'GRUB_CMDLINE_LINUX="zswap.enabled=1 zswap.compressor=lz4 zswap.max_pool_percent=30 video=1280x1024 vga=791  console=tty1 quiet"\n' >>/etc/default/grub
 printf "GRUB_TERMINAL=console\n" >>/etc/default/grub
 [ $debug = 1 ] && read -p Enter
 grub-install ${main_device}

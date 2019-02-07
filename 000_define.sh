@@ -219,6 +219,6 @@ mount_packages=0
 [ $devel = 1 ] && precompiled_file="4.9.16.tar.bz2"
 
 
-[ $tester = 1 ] && kernel="precompiled"
+[ $tester = 1 ] && kernel="livecd"
 [ $tester = 1 ] && precompiled_uri="http://10.10.104.122/for_stage4/"
 [ $tester = 1 ] && precompiled_file="4.9.16.tar.bz2"
