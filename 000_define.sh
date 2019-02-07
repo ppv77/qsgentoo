@@ -13,34 +13,53 @@ main_device="/dev/sda"
 #mountpoints define-------------------------------------------------------------------------------------------
 #samle disk
 # gpt
-#dev		name(mountpoint)	start		end	fs
-#/dev/sdx1	bios_grub		1M		1G	no
-#/dev/sdx2	/			1G		20G	ext4
-#/dev/sdx3	/boot			20G		21G	ext2
-#/dev/sdx4	swap			21G		22G	swap
+# device		type		flag		start		end	fs	mountpoint
+#/dev/sdx1		primary		bios_grub	1M		3M	no	no
+#/dev/sdx2		primary		boot		3M		1G	ext2	/boot
+#/dev/sdx3		primary		lvm		1G		100%	lvm	no
+
+#partitions
+declare -A pt
+pt[type,1]="primary"
+pt[set,1]="bios_grub"
+pt[start,1]="1M"
+pt[end,1]="3M"
+pt[fs,1]=""
+pt[mp,1]=""
+
+pt[type,2]="primary"
+pt[set,2]="boot"
+pt[start,2]="3M"
+pt[end,2]="1G"
+pt[fs,2]="ext2"
+pt[mp,2]="/boot"
+
+pt[type,3]="primary"
+pt[set,3]="lvm"
+pt[start,3]="1G"
+pt[end,3]="100%"
+pt[fs,3]="lvm"
+pt[mp,3]=""
+
+# device			size		fs	mountpoint
+#/dev/gentoo/swap		2G		swap	swap
+#/dev/gentoo/rootfs		100%FREE	ext4	/
+
+#lvm volumes
+declare -A lv
+#lvm volume group
+vg_name="gentoo"
+lv[name,1]="swap"
+lv[size,1]="-L2G"
+lv[fs,1]="swap"
+lv[mp,1]="swap"
+
+lv[name,2]="rootfs"
+lv[size,2]="-l100%FREE"
+lv[fs,2]="ext4"
+lv[mp,2]="/"
 
 
-declare -A mp
-
-mp[mountpoint,1]="bios_grub"
-mp[start,1]="1M"
-mp[end,1]="1G"
-mp[fs,1]=""
-
-mp[mountpoint,2]="/"
-mp[start,2]="1G"
-mp[end,2]="20G"
-mp[fs,2]="ext4"
-
-mp[mountpoint,3]="/boot"
-mp[start,3]="20G"
-mp[end,3]="21G"
-mp[fs,3]="ext2"
-
-mp[mountpoint,4]="swap"
-mp[start,4]="21G"
-mp[end,4]="22G"
-mp[fs,4]="swap"
 
 
 
@@ -134,8 +153,9 @@ new_root="/mnt/gentoo"
 cpus=$(grep -c process /proc/cpuinfo)
 makeopts="-j$(($cpus+1))"
 
+
 #!!!WARNING!!!!Only for development host
-devel=0
+devel=1
 #!!!WARNING!!!!Only for tester host
 tester=0
 
@@ -197,11 +217,11 @@ mount_packages=0
 [ $devel = 1 ] && packages_path="/var/www/localhost/for_stage4/packages"
 
 
-#[ $devel = 1 ] && kernel="precompiled"
+[ $devel = 1 ] && kernel="precompiled"
 [ $devel = 1 ] && precompiled_uri="http://localhost/for_stage4/"
 [ $devel = 1 ] && precompiled_file="4.9.16.tar.bz2"
 
 
-[ $tester = 1 ] && kernel="precompiled"
+[ $tester = 1 ] && kernel="livecd"
 [ $tester = 1 ] && precompiled_uri="http://10.10.104.122/for_stage4/"
 [ $tester = 1 ] && precompiled_file="4.9.16.tar.bz2"

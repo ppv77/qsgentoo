@@ -4,7 +4,7 @@
 [ $devel = 0 ] && [ $tester = 0 ] && emerge-webrsync ${quiet} ${verbose}
 #emerge-webrsync ${quiet} ${verbose}
 
-
+emerge  ${ask} ${quiet} dracut lvm2
 case $kernel in
     "precompiled" )
 	printf "Download precompiled kernel.\n"
@@ -13,7 +13,6 @@ case $kernel in
     ;;
     "livecd" )
 	printf "Using kernel from livecd.\n"
-	emerge  ${ask} ${quiet} dracut
 	mkdir -p /lib64/modules
 	cp -r /mnt/mnt/livecd/lib64/modules/$(uname -r) /lib64/modules/
 	cp /mnt/mnt/cdrom/isolinux/gentoo /boot/vmlinuz-$(uname -r)
@@ -22,7 +21,7 @@ case $kernel in
     ;;
     * )
 	printf "Compile kernel.\n"
-	emerge  ${ask} ${quiet} virtual/linux-sources dracut
+	emerge  ${ask} ${quiet} virtual/linux-sources
 	pushd /usr/src/linux >/dev/null
 	[ -f "/.config" ] && cp /.config /usr/src/linux/
 	[ ! -f "/.config" ] && cp  /proc/config.gz /usr/src/linux && gunzip config.gz && mv config .config
@@ -42,20 +41,9 @@ esac
 
 printf "Prepare world.\n"
 
-for (( i=1; i < ${#mp[@]}/4+1; i++ ))
-do
-    case "${mp[fs,$i]}" in
-    "ext4" | "ext2" | "ext3" ) 
-        printf "sys-fs/e2fsprogs\n" >>/var/lib/portage/world
-        ;;
-    "reiserfs" ) 
-	printf "sys-fs/reiserfsprogs\n" >>/var/lib/portage/world
-        ;;
-    "xfs" ) 
-    printf "sys-fs/xfsprogs\n" >>/var/lib/portage/world
-        ;;
-    esac
-done
+printf "sys-fs/e2fsprogs\n" >>/var/lib/portage/world
+printf "sys-fs/reiserfsprogs\n" >>/var/lib/portage/world
+printf "sys-fs/xfsprogs\n" >>/var/lib/portage/world
 printf "sys-boot/grub\n" >>/var/lib/portage/world
 [ $ru = 1 ] && printf "media-fonts/terminus-font\n" >>/var/lib/portage/world
 #if [ $soft_level > 0 ]; then
