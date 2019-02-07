@@ -35,8 +35,8 @@ function makefs(){
 }
 
 printf "Prepare disks.\n"
-read -p "All data on ${main_device} will be removed (y/n):" yn
-[ $yn != "y" ] && exit
+printf "All data on ${main_device} will be removed in 10 sec\n"
+sleep 10
 ${sudo_cmd} rc-service lvmetad stop ${quiet}
 ${sudo_cmd} partx -u ${main_device}
 ${sudo_cmd} dmsetup remove_all
