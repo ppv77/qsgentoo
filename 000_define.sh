@@ -13,11 +13,10 @@ main_device="/dev/sda"
 #mountpoints define-------------------------------------------------------------------------------------------
 #samle disk
 # gpt
-#dev		name(mountpoint)	start		end	fs
-#/dev/sdx1	bios_grub		1M		1G	no
-#/dev/sdx2	/			1G		20G	ext4
-#/dev/sdx3	/boot			20G		21G	ext2
-#/dev/sdx4	swap			21G		22G	swap
+# device		type		flag		start		end	fs	mountpoint
+#/dev/sdx1		primary		bios_grub	1M		3M	no	no
+#/dev/sdx2		primary		boot		3M		1G	ext2	/boot
+#/dev/sdx3		primary		lvm		1G		100%	lvm	no
 
 #partitions
 declare -A pt
@@ -41,6 +40,10 @@ pt[start,3]="1G"
 pt[end,3]="100%"
 pt[fs,3]="lvm"
 pt[mp,3]=""
+
+# device			size		fs	mountpoint
+#/dev/gentoo/swap		2G		swap	swap
+#/dev/gentoo/rootfs		100%FREE	ext4	/
 
 #lvm volumes
 declare -A lv
