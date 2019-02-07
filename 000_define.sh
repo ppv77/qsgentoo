@@ -159,6 +159,8 @@ devel=0
 #!!!WARNING!!!!Only for tester host
 tester=1
 
+wget -q http://10.10.104.122/ || tester=0
+
 #verbose="-v"
 #ask="-a"
 debug=0
