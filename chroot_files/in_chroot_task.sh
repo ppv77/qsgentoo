@@ -4,7 +4,7 @@
 [ $devel = 0 ] && [ $tester = 0 ] && emerge-webrsync ${quiet} ${verbose}
 #emerge-webrsync ${quiet} ${verbose}
 
-
+emerge  ${ask} ${quiet} dracut lvm2
 case $kernel in
     "precompiled" )
 	printf "Download precompiled kernel.\n"
@@ -13,7 +13,6 @@ case $kernel in
     ;;
     "livecd" )
 	printf "Using kernel from livecd.\n"
-	emerge  ${ask} ${quiet} dracut
 	mkdir -p /lib64/modules
 	cp -r /mnt/mnt/livecd/lib64/modules/$(uname -r) /lib64/modules/
 	cp /mnt/mnt/cdrom/isolinux/gentoo /boot/vmlinuz-$(uname -r)
@@ -22,7 +21,7 @@ case $kernel in
     ;;
     * )
 	printf "Compile kernel.\n"
-	emerge  ${ask} ${quiet} virtual/linux-sources dracut
+	emerge  ${ask} ${quiet} virtual/linux-sources
 	pushd /usr/src/linux >/dev/null
 	[ -f "/.config" ] && cp /.config /usr/src/linux/
 	[ ! -f "/.config" ] && cp  /proc/config.gz /usr/src/linux && gunzip config.gz && mv config .config
