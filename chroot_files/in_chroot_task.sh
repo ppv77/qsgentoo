@@ -5,6 +5,8 @@
 #emerge-webrsync ${quiet} ${verbose}
 
 emerge  ${ask} ${quiet} dracut lvm2
+rc-update add lvm boot
+rc-service lvm start
 case $kernel in
     "precompiled" )
 	printf "Download precompiled kernel.\n"
