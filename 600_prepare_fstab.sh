@@ -11,7 +11,7 @@ for (( i=1; i < ${#pt[@]}/6+1; i++ ))
 do
     [ "${pt[mp,$i]}" = "" ] && continue
     [ "${pt[mp,$i]}" = "swap" ] && printf "${main_device}$i		none		swap		sw		0	0\n" | ${sudo_cmd} tee -a ${new_root}/etc/fstab >/dev/null && continue
-    [ "${pt[mp,$i]}" = "/boot" ] && printf "${main_device}$i		${pt[mp,$i]}	${pt[fs,$i]}		defaults,noatime,noauto		0	2\n" | ${sudo_cmd} tee -a ${new_root}/etc/fstab >/dev/null && continue
+    [ "${pt[mp,$i]}" = "/boot" ] && printf "${main_device}$i		${pt[mp,$i]}	${pt[fs,$i]}		defaults,noatime		0	2\n" | ${sudo_cmd} tee -a ${new_root}/etc/fstab >/dev/null && continue
     printf "${main_device}$i		${pt[mp,$i]}	${pt[fs,$i]}		noatime		0	1\n" | ${sudo_cmd} tee -a ${new_root}/etc/fstab >/dev/null
 done
 
