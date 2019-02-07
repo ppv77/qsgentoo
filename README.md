@@ -1,7 +1,7 @@
 # qsgentoo
 Quick Start Gentoo script
 
-Watch video https://youtu.be/CSY0NWl1Hro
+Watch video https://youtu.be/qAyS8q7u4-o
 
 Fast way
 1. boot from gentoo livecd
