@@ -16,7 +16,8 @@ main_device="/dev/sda"
 # device		type		flag		start		end	fs	mountpoint
 #/dev/sdx1		primary		bios_grub	1M		3M	no	no
 #/dev/sdx2		primary		boot		3M		1G	ext2	/boot
-#/dev/sdx3		primary		lvm		1G		100%	lvm	no
+#/dev/sdx3		primary		no		1G		3G	ext2	/boot
+#/dev/sdx4		primary		lvm		3G		100%	lvm	no
 
 #partitions
 declare -A pt
@@ -35,29 +36,31 @@ pt[fs,2]="ext2"
 pt[mp,2]="/boot"
 
 pt[type,3]="primary"
-pt[set,3]="lvm"
-pt[start,3]="1G"
-pt[end,3]="100%"
-pt[fs,3]="lvm"
-pt[mp,3]=""
+pt[set,3]=""
+pt[start,3]="1GM"
+pt[end,3]="3G"
+pt[fs,3]="swap"
+pt[mp,3]="swap"
+
+pt[type,4]="primary"
+pt[set,4]="lvm"
+pt[start,4]="3G"
+pt[end,4]="100%"
+pt[fs,4]="lvm"
+pt[mp,4]=""
 
 # device			size		fs	mountpoint
-#/dev/gentoo/swap		2G		swap	swap
 #/dev/gentoo/rootfs		100%FREE	ext4	/
 
 #lvm volumes
 declare -A lv
 #lvm volume group
 vg_name="gentoo"
-lv[name,1]="swap"
-lv[size,1]="-L2G"
-lv[fs,1]="swap"
-lv[mp,1]="swap"
 
-lv[name,2]="rootfs"
-lv[size,2]="-l100%FREE"
-lv[fs,2]="ext4"
-lv[mp,2]="/"
+lv[name,1]="rootfs"
+lv[size,1]="-l100%FREE"
+lv[fs,1]="ext4"
+lv[mp,1]="/"
 
 
 
