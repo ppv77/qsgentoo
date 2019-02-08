@@ -154,12 +154,10 @@ cpus=$(grep -c process /proc/cpuinfo)
 makeopts="-j$(($cpus+1))"
 
 
-#!!!WARNING!!!!Only for development host
-devel=0
-#!!!WARNING!!!!Only for tester host
-tester=1
-
+[ -f .devel_host ] && devel=1 && tester=0
+[ ! -f .devel_host ] && devel=0 && tester=1
 wget -q -O /dev/null http://10.10.104.122/ || tester=0
+
 
 #verbose="-v"
 #ask="-a"
