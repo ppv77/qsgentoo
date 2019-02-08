@@ -19,3 +19,5 @@ if [ $ru = 1 ] ; then
 fi
 
 [ -f ${chroot_files}/${kernel} ] && ${sudo_cmd} cp  ${verbose} ${chroot_files}/${kernel} ${new_root}/.config
+
+${sudo_cmd} cp  ${verbose} first* ${new_root}/root
