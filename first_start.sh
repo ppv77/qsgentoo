@@ -36,12 +36,8 @@ make olddefconfig
 make -j10 all
 make -j10 modules_install
 make -j10 install
-make -j10 firmware_install
 sleep 10
 k_rel=$(make kernelrelease)
-dracut --kver $k_rel --force
-mv /boot/initramfs-$k_rel.img /boot/initramfs-$k_rel-rescue.img
-ln -s /boot/vmlinuz-$k_rel  /boot/vmlinuz-$k_rel-rescue
 dracut --kver $k_rel -H --force
 grub-mkconfig -o /boot/grub/grub.cfg
 popd
