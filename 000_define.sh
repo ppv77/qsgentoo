@@ -155,7 +155,6 @@ makeopts="-j$(($cpus+1))"
 
 
 
-=======
 #!!!WARNING!!!!Only for development host
 devel=0
 #!!!WARNING!!!!Only for tester host
