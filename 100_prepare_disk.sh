@@ -1,6 +1,5 @@
 #!/bin/bash
 . 000_define.sh
-
 function makefs(){
     case $1 in
 	"ext4" )
@@ -36,7 +35,7 @@ function makefs(){
 
 printf "Prepare disks.\n"
 printf "All data on ${main_device} will be removed in 10 sec\n"
-sleep 10
+sleep 30
 ${sudo_cmd} rc-service lvmetad stop ${quiet}
 ${sudo_cmd} partx -u ${main_device}
 ${sudo_cmd} dmsetup remove_all
