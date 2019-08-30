@@ -159,10 +159,11 @@ makeopts="-j$(($cpus+1))"
 
 
 #!!!WARNING!!!!Only for development host
-devel=0
+devel=1
 #!!!WARNING!!!!Only for tester host
-tester=1
-wget -q -O /dev/null http://10.10.104.122/ || tester=0
+tester=0
+wget -q -O /dev/null http://www.stand.gis.lan/NAS00_shared/gentoo/ || tester=0
+wget -q -O /dev/null http://www.stand.gis.lan/NAS00_shared/gentoo/ || devel=0
 [ $devel = 1 ] && echo DEVEL_HOST
 [ $tester = 1 ] && echo TESTER_HOST
 
@@ -187,15 +188,15 @@ soft_level=0
 [ $devel = 1 ] && sudo_cmd="/usr/bin/sudo" || sudo_cmd=""
 
 #stage uri
-[ $tester = 1 ] && Stage3_uri="http://10.10.104.122/for_stage4/"
-[ $devel = 1 ] && Stage3_uri="http://localhost/for_stage4/"
+[ $tester = 1 ] && Stage3_uri="http://www.stand.gis.lan/NAS00_shared/gentoo/"
+[ $devel = 1 ] && Stage3_uri="http://www.stand.gis.lan/NAS00_shared/gentoo/"
 
 #portages
 #------------------------------------
 #where download portage? Not require.
 #portage_zip="https://github.com/gentoo-mirror/gentoo/archive/stable.zip"
-[ $tester = 1 ] && portage_zip="http://10.10.104.122/for_stage4/gentoo-stable.zip"
-[ $devel = 1 ] && portage_zip="http://localhost/for_stage4/gentoo-stable.zip"
+[ $tester = 1 ] && portage_zip="http://www.stand.gis.lan/NAS00_shared/gentoo/gentoo-stable.zip"
+[ $devel = 1 ] && portage_zip="http://www.stand.gis.lan/NAS00_shared/gentoo/gentoo-stable.zip"
 
 #destination
 [ $devel = 1 ] && main_device="/dev/sdb"
@@ -206,29 +207,29 @@ soft_level=0
 #--------------------------------------------------
 #we already have distfiles? if livecd - no. new files will be stored
 mount_distfiles=0
-[ $devel = 1 ] && mount_distfiles=1
-distfiles_path="/var/www/localhost/for_stage4/distfiles"
+#[ $devel = 1 ] && mount_distfiles=1
+#distfiles_path="/var/www/localhost/for_stage4/distfiles"
 
-[ $devel = 1 ] && use_packages=1
-[ $devel = 1 ] && binhost="http://localhost/for_stage4/packages"
+#[ $devel = 1 ] && use_packages=1
+#[ $devel = 1 ] && binhost="http://localhost/for_stage4/packages"
 
-[ $tester = 1 ] && use_packages=1
-[ $tester = 1 ] && binhost="http://10.10.104.122/for_stage4/packages"
+#[ $tester = 1 ] && use_packages=1
+#[ $tester = 1 ] && binhost="http://10.10.104.122/for_stage4/packages"
 
 
 
 #we have local pkgs? new files will be stored
 mount_packages=0
-[ $devel = 1 ] && mount_packages=1
+#[ $devel = 1 ] && mount_packages=1
 #packages_path="/var/www/localhost/for_stage4/packages"
-[ $devel = 1 ] && packages_path="/var/www/localhost/for_stage4/packages"
+#[ $devel = 1 ] && packages_path="/var/www/localhost/for_stage4/packages"
 
 
-[ $devel = 1 ] && kernel="precompiled"
-[ $devel = 1 ] && precompiled_uri="http://localhost/for_stage4/"
-[ $devel = 1 ] && precompiled_file="4.9.16.tar.bz2"
+#[ $devel = 1 ] && kernel="precompiled"
+#[ $devel = 1 ] && precompiled_uri="http://localhost/for_stage4/"
+#[ $devel = 1 ] && precompiled_file="4.9.16.tar.bz2"
 
 
-[ $tester = 1 ] && kernel="livecd"
-[ $tester = 1 ] && precompiled_uri="http://10.10.104.122/for_stage4/"
-[ $tester = 1 ] && precompiled_file="4.9.16.tar.bz2"
+#[ $tester = 1 ] && kernel="livecd"
+#[ $tester = 1 ] && precompiled_uri="http://10.10.104.122/for_stage4/"
+#[ $tester = 1 ] && precompiled_file="4.9.16.tar.bz2"
