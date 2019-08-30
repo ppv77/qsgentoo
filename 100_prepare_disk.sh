@@ -48,7 +48,7 @@ ${sudo_cmd} parted -a optimal -s ${main_device} mklabel gpt
 for (( i=1; i < ${#pt[@]}/6+1; i++ ))
 do
      ${sudo_cmd} parted -a optimal -s ${main_device} mkpart ${pt[type,$i]} ${pt[start,$i]} ${pt[end,$i]}
-     ${sudo_cmd} parted -s ${main_device} set $i ${pt[set,$i]} on
+     [ "${pt[set,$i]}" = "" ] ||  ${sudo_cmd} parted -s ${main_device} set $i ${pt[set,$i]} on
      makefs "${pt[fs,$i]}" "${main_device}$i"
 
 done
