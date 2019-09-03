@@ -178,11 +178,6 @@ kernel_quiet="-s"
 #where script find files for chroot 
 chroot_files="chroot_files"
 
-soft_level=0
-#[ $minimal = 1 ] && soft_level=0
-#[ $minimal = 0 ] && soft_level=1
-#[ $1 = "addons" ] && soft_level=2
-
 
 #----------------------------------------------------
 #path to sudo or no sudo
