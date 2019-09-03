@@ -90,12 +90,6 @@ printf "en_US ISO-8859-1\nen_US.UTF-8 UTF-8\n" >/etc/locale.gen
 locale-gen
 eselect locale set en_US.utf8
 
-#printf "Convert portage to git.\n"
-
-#rm -rf /usr/portage
-#git clone --depth 1 https://github.com/gentoo-mirror/gentoo.git /usr/portage
-#env-update ; . /etc/profile
-#[ $debug = 1 ] && read -p Enter
 
 
 
