@@ -208,12 +208,6 @@ soft_level=0
 
 
 
-#we have local pkgs? new files will be stored
-mount_packages=0
-#[ $devel = 1 ] && mount_packages=1
-#packages_path="/var/www/localhost/for_stage4/packages"
-#[ $devel = 1 ] && packages_path="/var/www/localhost/for_stage4/packages"
-
 
 
 
