@@ -15,10 +15,10 @@ case $kernel in
     ;;
     "livecd" )
 	printf "Using kernel from livecd.\n"
-	mkdir -p /lib64/modules
-	cp -r /mnt/mnt/livecd/lib64/modules/$(uname -r) /lib64/modules/
-	cp /mnt/mnt/cdrom/isolinux/gentoo /boot/vmlinuz-$(uname -r)
-	cp /mnt/mnt/cdrom/isolinux/System-gentoo.map /boot/System.map-$(uname -r)
+	mkdir -p /lib/modules
+	cp -r /mnt/mnt/livecd/lib/modules/$(uname -r) /lib/modules/
+	cp /mnt/mnt/cdrom/boot/gentoo /boot/vmlinuz-$(uname -r)
+	cp /mnt/mnt/cdrom/boot/System-gentoo.map /boot/System.map-$(uname -r)
 	dracut --kver $(uname -r)
     ;;
     * )
