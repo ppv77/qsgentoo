@@ -90,13 +90,8 @@ use_packages=0
 #get kernel config from booted system  /proc/config.gz (recomended)
 #kernel=""
 #or
-#use precompiled kernel from livecd (very fast)
+#use kernel from livecd (very fast)
 kernel="livecd"
-#or
-#use precompiled kernel from url
-#kernel="precompiled"
-#precompiled_uri="http://url/"
-#precompiled_file="4.9.16.tar.bz2"
 #or
 #kernel config from some qsgentoo files
 #kernel="config-esx-minimal-4.9.16"
@@ -225,11 +220,6 @@ mount_packages=0
 #[ $devel = 1 ] && packages_path="/var/www/localhost/for_stage4/packages"
 
 
-#[ $devel = 1 ] && kernel="precompiled"
-#[ $devel = 1 ] && precompiled_uri="http://localhost/for_stage4/"
-#[ $devel = 1 ] && precompiled_file="4.9.16.tar.bz2"
 
 
 #[ $tester = 1 ] && kernel="livecd"
-#[ $tester = 1 ] && precompiled_uri="http://10.10.104.122/for_stage4/"
-#[ $tester = 1 ] && precompiled_file="4.9.16.tar.bz2"

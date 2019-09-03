@@ -10,11 +10,6 @@ emerge  ${ask} ${quiet} dracut lvm2
 rc-update add lvm boot
 rc-service lvm start
 case $kernel in
-    "precompiled" )
-	printf "Download precompiled kernel.\n"
-	wget -nv ${quiet} ${precompiled_uri}${precompiled_file}
-	tar ${verbose} -xjpf ${precompiled_file} && rm ${precompiled_file}
-    ;;
     "livecd" )
 	printf "Using kernel from livecd.\n"
 	mkdir -p /lib/modules
