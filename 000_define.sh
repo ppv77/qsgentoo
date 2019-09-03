@@ -159,9 +159,9 @@ makeopts="-j$(($cpus+1))"
 
 
 #!!!WARNING!!!!Only for development host
-devel=1
+devel=0
 #!!!WARNING!!!!Only for tester host
-tester=0
+tester=1
 wget -q -O /dev/null http://www.stand.gis.lan/NAS00_shared/gentoo/ || tester=0
 wget -q -O /dev/null http://www.stand.gis.lan/NAS00_shared/gentoo/ || devel=0
 [ $devel = 1 ] && echo DEVEL_HOST
