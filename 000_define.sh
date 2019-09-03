@@ -199,11 +199,6 @@ soft_level=0
 
 
 
-#--------------------------------------------------
-#we already have distfiles? if livecd - no. new files will be stored
-mount_distfiles=0
-#[ $devel = 1 ] && mount_distfiles=1
-#distfiles_path="/var/www/localhost/for_stage4/distfiles"
 
 #[ $devel = 1 ] && use_packages=1
 #[ $devel = 1 ] && binhost="http://localhost/for_stage4/packages"

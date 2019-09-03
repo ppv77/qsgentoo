@@ -4,9 +4,6 @@
 printf "Umount systems.\n"
 
 
-if [ $mount_distfiles = 1 ] ; then
-    ${sudo_cmd} umount  ${verbose} ${new_root}/usr/portage/distfiles
-fi
 
 if [ $mount_packages = 1 ] ; then
     ${sudo_cmd} umount  ${verbose} ${new_root}/usr/portage/packages
