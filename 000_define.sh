@@ -86,6 +86,7 @@ use_flags="openssl"
 use_packages=0
 #binhost="some-url"
 
+
 #---------------------------------------------------
 #get kernel config from booted system  /proc/config.gz (recomended)
 #kernel=""
@@ -115,12 +116,17 @@ rm_stage3=1
 #generate stage4 file?
 mk_stage4=0
 
+#----------
+#rm distfiles
+rm_distfiles=1
+
 #------------
 #rm portages
 rm_portages=0
 
 
-
+#remove packages after install
+rm_packages=1
 
 
 
@@ -204,9 +210,9 @@ soft_level=0
 #[ $devel = 1 ] && binhost="http://localhost/for_stage4/packages"
 
 [ $tester = 1 ] && use_packages=1
+[ $tester = 1 ] && rm_packages=0
+[ $tester = 1 ] && rm_distfiles=0
 [ $tester = 1 ] && binhost="http://www.stand.gis.lan/NAS00_shared/gentoo/packages/"
-
-
 
 
 
