@@ -1,6 +1,8 @@
 #!/bin/bash 
 . 000_define.sh
 
+export PS1="(chroot) ${PS1}"
+
 [ $devel = 0 ] && [ $tester = 0 ] && emerge-webrsync ${quiet} ${verbose}
 #emerge-webrsync ${quiet} ${verbose}
 
