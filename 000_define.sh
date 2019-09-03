@@ -203,8 +203,8 @@ soft_level=0
 #[ $devel = 1 ] && use_packages=1
 #[ $devel = 1 ] && binhost="http://localhost/for_stage4/packages"
 
-#[ $tester = 1 ] && use_packages=1
-#[ $tester = 1 ] && binhost="http://10.10.104.122/for_stage4/packages"
+[ $tester = 1 ] && use_packages=1
+[ $tester = 1 ] && binhost="http://www.stand.gis.lan/NAS00_shared/gentoo/packages/"
 
 
 
