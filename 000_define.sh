@@ -4,7 +4,7 @@
 
 
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!WARNING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!WARNING!!!!!!!!!!!!!!!!!!WARNING!!!!!!!!!!!!!!!!WARNING!!!!!!!!!!!WARNING!!!!!!!!!!!!!WARNING!!!!!!!!!!!!!!!!!!
-export main_device="/dev/sda"
+main_device="/dev/sda"
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!WARNING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!WARNING!!!!!!!!!!!!!!!!!!WARNING!!!!!!!!!!!!!!!!WARNING!!!!!!!!!!!WARNING!!!!!!!!!!!!!WARNING!!!!!!!!!!!!!!!!!!
 
 
@@ -21,33 +21,33 @@ export main_device="/dev/sda"
 
 #partitions
 declare -A pt
-export pt[type,1]="primary"
-export pt[set,1]="bios_grub"
-export pt[start,1]="1M"
-export pt[end,1]="3M"
-export pt[fs,1]=""
-export pt[mp,1]=""
+pt[type,1]="primary"
+pt[set,1]="bios_grub"
+pt[start,1]="1M"
+pt[end,1]="3M"
+pt[fs,1]=""
+pt[mp,1]=""
 
-export pt[type,2]="primary"
-export pt[set,2]="boot"
-export pt[start,2]="3M"
-export pt[end,2]="1G"
-export pt[fs,2]="ext2"
-export pt[mp,2]="/boot"
+pt[type,2]="primary"
+pt[set,2]="boot"
+pt[start,2]="3M"
+pt[end,2]="1G"
+pt[fs,2]="ext2"
+pt[mp,2]="/boot"
 
-export pt[type,3]="primary"
-export pt[set,3]=""
-export pt[start,3]="1GM"
-export pt[end,3]="3G"
-export pt[fs,3]="swap"
-export pt[mp,3]="swap"
+pt[type,3]="primary"
+pt[set,3]=""
+pt[start,3]="1GM"
+pt[end,3]="3G"
+pt[fs,3]="swap"
+pt[mp,3]="swap"
 
-export pt[type,4]="primary"
-export pt[set,4]="lvm"
-export pt[start,4]="3G"
-export pt[end,4]="100%"
-export pt[fs,4]="lvm"
-export pt[mp,4]=""
+pt[type,4]="primary"
+pt[set,4]="lvm"
+pt[start,4]="3G"
+pt[end,4]="100%"
+pt[fs,4]="lvm"
+pt[mp,4]=""
 
 # device			size		fs	mountpoint
 #/dev/gentoo/rootfs		100%FREE	ext4	/
@@ -55,12 +55,12 @@ export pt[mp,4]=""
 #lvm volumes
 declare -A lv
 #lvm volume group
-export vg_name="gentoo"
+vg_name="gentoo"
 
-export lv[name,1]="rootfs"
-export lv[size,1]="-l100%FREE"
-export lv[fs,1]="ext4"
-export lv[mp,1]="/"
+lv[name,1]="rootfs"
+lv[size,1]="-l100%FREE"
+lv[fs,1]="ext4"
+lv[mp,1]="/"
 
 
 
@@ -68,65 +68,65 @@ export lv[mp,1]="/"
 
 #----------------------------------------------
 #gentoo stage uri and file
-export Stage3_uri="http://distfiles.gentoo.org/releases/amd64/autobuilds/current-stage3-amd64/"
+Stage3_uri="http://distfiles.gentoo.org/releases/amd64/autobuilds/current-stage3-amd64/"
 #or
-#export Stage3_uri="http://mirror.yandex.ru/gentoo-distfiles/releases/amd64/autobuilds/current-stage3-amd64/"
+#Stage3_uri="http://mirror.yandex.ru/gentoo-distfiles/releases/amd64/autobuilds/current-stage3-amd64/"
 
 #----------------------------------------------
-#export Stage3_file="stage3-amd64-201*.tar.xz"
+#Stage3_file="stage3-amd64-201*.tar.xz"
 #or
-export Stage3_file="stage3-amd64-nomultilib-*.tar.xz"
+Stage3_file="stage3-amd64-nomultilib-*.tar.xz"
 
 #--------------------------------------
 #add some USE
-export use_flags="openssl"
+use_flags="openssl"
 
 #-----------------------------------------------------
 #use and make pkg
-export use_packages=0
-#export binhost="some-url"
+use_packages=0
+#binhost="some-url"
 
 
 #---------------------------------------------------
 #get kernel config from booted system  /proc/config.gz (recomended)
-#export kernel=""
+#kernel=""
 #or
 #use kernel from livecd (very fast)
-export kernel="livecd"
+kernel="livecd"
 #or
 #kernel config from some qsgentoo files
-#export kernel="config-esx-minimal-4.9.16"
+#kernel="config-esx-minimal-4.9.16"
 
 #do menuconfig?
-export menuconfig=0
+menuconfig=0
 
 #-------------------------
 #add terminus-fonts and RU keyb
-export ru=0
+ru=0
 
 #---------------------
 #rm kernel sources
-export rm_linux_sources=0
+rm_linux_sources=0
 
 #----------------------
 #remove stage3 file after unpack?
-export rm_stage3=1
+rm_stage3=1
 
 #--------------------------
 #generate stage4 file?
-export mk_stage4=0
+mk_stage4=0
 
 #----------
 #rm distfiles
-export rm_distfiles=1
+rm_distfiles=1
 
 #------------
 #rm portages
-export rm_portages=0
+rm_portages=0
 
 
 #remove packages after install
-export rm_packages=1
+rm_packages=1
 
 
 
