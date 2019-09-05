@@ -27,7 +27,7 @@ case $kernel in
         make ${kernel_quiet} olddefconfig
 	[ $menuconfig == 1 ] && make menuconfig
         make  ${kernel_quiet} ${makeopts} all
-        make  ${kernel_quiet} modules_install
+        make  ${kernel_quiet} ${makeopts} modules_install
         make  ${kernel_quiet} install
         sleep 10
 	dracut ${quiet} --kver $(make kernelrelease) --force
