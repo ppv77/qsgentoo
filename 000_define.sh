@@ -92,10 +92,10 @@ use_packages=0
 #kernel=""
 #or
 #use kernel from livecd (very fast)
-#kernel="livecd"
+kernel="livecd"
 #or
 #kernel config from some qsgentoo files
-kernel="config-esx-minimal-4.9.16"
+#kernel="config-esx-minimal-4.9.16"
 
 #do menuconfig?
 menuconfig=0
@@ -162,7 +162,9 @@ makeopts="-j$(($cpus+1))"
 #!!!WARNING!!!!Only for development host
 devel=0
 #!!!WARNING!!!!Only for tester host
-tester=1
+tester=0
+
+
 wget -q -O /dev/null http://www.stand.gis.lan/NAS00_shared/gentoo/ || tester=0
 wget -q -O /dev/null http://www.stand.gis.lan/NAS00_shared/gentoo/ || devel=0
 [ $devel = 1 ] && echo DEVEL_HOST
