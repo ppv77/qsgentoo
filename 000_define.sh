@@ -89,13 +89,13 @@ use_packages=0
 
 #---------------------------------------------------
 #get kernel config from booted system  /proc/config.gz (recomended)
-kernel=""
+#kernel=""
 #or
 #use kernel from livecd (very fast)
 #kernel="livecd"
 #or
 #kernel config from some qsgentoo files
-#kernel="config-esx-minimal-4.9.16"
+kernel="config-esx-minimal-4.9.16"
 
 #do menuconfig?
 menuconfig=0
