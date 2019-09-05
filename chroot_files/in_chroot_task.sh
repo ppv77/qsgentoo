@@ -84,7 +84,7 @@ eselect locale set en_US.utf8
 
 printf "Prepare Grub.\n"
 
-printf "GRUB_DISABLE_RECOVERY=true\n" >>/etc/default/grub
+printf "GRUB_DISABLE_RECOVERY=false\n" >>/etc/default/grub
 printf "GRUB_DEFAULT=saved\n" >>/etc/default/grub
 printf "GRUB_DISABLE_SUBMENU=y\n" >>/etc/default/grub
 printf "GRUB_TIMEOUT=2\n" >>/etc/default/grub
