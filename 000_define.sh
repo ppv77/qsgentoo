@@ -162,7 +162,7 @@ makeopts="-j$(($cpus+1))"
 #!!!WARNING!!!!Only for development host
 devel=0
 #!!!WARNING!!!!Only for tester host
-tester=0
+tester=1
 
 
 wget -q -O /dev/null http://www.stand.gis.lan/NAS00_shared/gentoo/ || tester=0
@@ -207,11 +207,11 @@ chroot_files="chroot_files"
 #[ $devel = 1 ] && binhost="http://localhost/for_stage4/packages"
 
 [ $tester = 1 ] && use_packages=1
-[ $tester = 1 ] && rm_packages=0
+[ $tester = 1 ] && rm_packages=1
 [ $tester = 1 ] && rm_distfiles=0
 [ $tester = 1 ] && binhost="http://www.stand.gis.lan/NAS00_shared/gentoo/packages/"
 
 
 
 
-#[ $tester = 1 ] && kernel="livecd"
+[ $tester = 1 ] && kernel="livecd"
