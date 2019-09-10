@@ -73,9 +73,9 @@ Stage3_uri="http://distfiles.gentoo.org/releases/amd64/autobuilds/current-stage3
 #Stage3_uri="http://mirror.yandex.ru/gentoo-distfiles/releases/amd64/autobuilds/current-stage3-amd64/"
 
 #----------------------------------------------
-#Stage3_file="stage3-amd64-201*.tar.xz"
+Stage3_file="stage3-amd64-20*.tar.xz"
 #or
-Stage3_file="stage3-amd64-nomultilib-*.tar.xz"
+#Stage3_file="stage3-amd64-nomultilib-*.tar.xz"
 
 #--------------------------------------
 #add some USE
@@ -207,7 +207,7 @@ chroot_files="chroot_files"
 #[ $devel = 1 ] && binhost="http://localhost/for_stage4/packages"
 
 [ $tester = 1 ] && use_packages=1
-[ $tester = 1 ] && rm_packages=1
+[ $tester = 1 ] && rm_packages=0
 [ $tester = 1 ] && rm_distfiles=0
 [ $tester = 1 ] && binhost="http://www.stand.gis.lan/NAS00_shared/gentoo/packages/"
 
