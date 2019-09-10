@@ -11,7 +11,7 @@ ${sudo_cmd} cp  ${verbose} logfile ${new_root}/root
 #${sudo_cmd} cp  ${verbose} first* ${new_root}/root
 
 [ -f ${new_root}/.config ] && ${sudo_cmd} rm  ${verbose} ${new_root}/.config
-if [ $use_packages = 1 && $rm_packages = 1 ] ; then
+if [[ $use_packages = 1  &&  $rm_packages = 1 ]] ; then
     ${sudo_cmd} rm  ${verbose} ${new_root}/etc/portage/make.conf/binpkg
     ${sudo_cmd} rm  ${verbose} -Rf ${new_root}/var/cache/binpkgs/*
 fi
