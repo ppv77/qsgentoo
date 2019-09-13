@@ -5,6 +5,9 @@ function makefs(){
 	"ext4" )
 	    ${sudo_cmd} mkfs.ext4 -F ${quiet} ${verbose} $2
 	    ;;
+	"btrfs" )
+	    ${sudo_cmd} mkfs.btrfs -F ${quiet} ${verbose} $2
+	    ;;
 	"reiserfs" )
 	    ${sudo_cmd} mkfs.reiserfs ${quiet} -f $2
 	    ;;

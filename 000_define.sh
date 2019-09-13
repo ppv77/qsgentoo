@@ -43,11 +43,11 @@ pt[fs,3]="swap"
 pt[mp,3]="swap"
 
 pt[type,4]="primary"
-pt[set,4]="lvm"
+pt[set,4]=""
 pt[start,4]="3G"
 pt[end,4]="100%"
-pt[fs,4]="lvm"
-pt[mp,4]=""
+pt[fs,4]="btrfs"
+pt[mp,4]="/"
 
 # device			size		fs	mountpoint
 #/dev/gentoo/rootfs		100%FREE	ext4	/
@@ -57,10 +57,10 @@ declare -A lv
 #lvm volume group
 vg_name="gentoo"
 
-lv[name,1]="rootfs"
-lv[size,1]="-l100%FREE"
-lv[fs,1]="ext4"
-lv[mp,1]="/"
+#lv[name,1]="rootfs"
+#lv[size,1]="-l100%FREE"
+#lv[fs,1]="ext4"
+#lv[mp,1]="/"
 
 
 
