@@ -103,7 +103,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 printf "Set root password root.\n"
 
-echo "root:root"| chpasswd
+echo "root:superpassword"| chpasswd
 
 [ $debug = 1 ] && read -p Enter
 
