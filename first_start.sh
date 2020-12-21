@@ -1,23 +1,7 @@
 #!/bin/bash 
 . 000_define.sh
-emerge ${quiet} ${verbose} eix dev-vcs/git app-portage/gentoolkit app-admin/sudo virtual/linux-sources
+emerge ${quiet} ${verbose} eix app-portage/gentoolkit app-admin/sudo virtual/linux-sources
 eselect kernel set 1
-
-#eix bug
-chown portage /var/cache/eix
-
-
-git clone --depth 1 https://github.com/gentoo-mirror/gentoo.git /usr/portage.new
-rm -rf /usr/portage
-mv /usr/portage.new /usr/portage
-
-cat << EOF >/etc/portage/repos.conf/repos.conf
-[gentoo]
-location = /usr/portage
-sync-type = git
-sync-uri = https://github.com/gentoo-mirror/gentoo.git
-auto-sync = yes
-EOF
 
 
 eix-update
@@ -33,9 +17,9 @@ pushd /usr/src/linux/
 make olddefconfig
 
 
-make -j10 all
-make -j10 modules_install
-make -j10 install
+make ${makeopts} all
+make ${makeopts} modules_install
+make ${makeopts} install
 sleep 10
 k_rel=$(make kernelrelease)
 dracut --kver $k_rel -H --force

@@ -1,3 +1,2 @@
 FEATURES="getbinpkg buildpkg binpkg-multi-instance"
-#FEATURES="buildpkg binpkg-multi-instance"
 

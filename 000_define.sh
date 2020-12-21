@@ -43,11 +43,11 @@ pt[fs,3]="swap"
 pt[mp,3]="swap"
 
 pt[type,4]="primary"
-pt[set,4]="lvm"
+pt[set,4]=""
 pt[start,4]="3G"
 pt[end,4]="100%"
-pt[fs,4]="lvm"
-pt[mp,4]=""
+pt[fs,4]="btrfs"
+pt[mp,4]="/"
 
 # device			size		fs	mountpoint
 #/dev/gentoo/rootfs		100%FREE	ext4	/
@@ -57,10 +57,10 @@ declare -A lv
 #lvm volume group
 vg_name="gentoo"
 
-lv[name,1]="rootfs"
-lv[size,1]="-l100%FREE"
-lv[fs,1]="ext4"
-lv[mp,1]="/"
+#lv[name,1]="rootfs"
+#lv[size,1]="-l100%FREE"
+#lv[fs,1]="ext4"
+#lv[mp,1]="/"
 
 
 
@@ -73,9 +73,9 @@ Stage3_uri="http://distfiles.gentoo.org/releases/amd64/autobuilds/current-stage3
 #Stage3_uri="http://mirror.yandex.ru/gentoo-distfiles/releases/amd64/autobuilds/current-stage3-amd64/"
 
 #----------------------------------------------
-#Stage3_file="stage3-amd64-201*.tar.xz"
+Stage3_file="stage3-amd64-2020*.tar.xz"
 #or
-Stage3_file="stage3-amd64-nomultilib-*.tar.xz"
+#Stage3_file="stage3-amd64-nomultilib-2020*.tar.xz"
 
 #--------------------------------------
 #add some USE
@@ -85,6 +85,7 @@ use_flags="openssl"
 #use and make pkg
 use_packages=0
 #binhost="some-url"
+
 
 #---------------------------------------------------
 #get kernel config from booted system  /proc/config.gz (recomended)
@@ -115,12 +116,17 @@ rm_stage3=1
 #generate stage4 file?
 mk_stage4=0
 
+#----------
+#rm distfiles
+rm_distfiles=1
+
 #------------
 #rm portages
 rm_portages=0
 
 
-
+#remove packages after install
+rm_packages=1
 
 
 
@@ -157,6 +163,8 @@ makeopts="-j$(($cpus+1))"
 devel=0
 #!!!WARNING!!!!Only for tester host
 tester=1
+
+
 wget -q -O /dev/null http://www.stand.gis.lan/NAS00_shared/gentoo/ || tester=0
 wget -q -O /dev/null http://www.stand.gis.lan/NAS00_shared/gentoo/ || devel=0
 [ $devel = 1 ] && echo DEVEL_HOST
@@ -171,11 +179,6 @@ kernel_quiet="-s"
 #--------------------------------------------------
 #where script find files for chroot 
 chroot_files="chroot_files"
-
-soft_level=0
-#[ $minimal = 1 ] && soft_level=0
-#[ $minimal = 0 ] && soft_level=1
-#[ $1 = "addons" ] && soft_level=2
 
 
 #----------------------------------------------------
@@ -199,27 +202,16 @@ soft_level=0
 
 
 
-#--------------------------------------------------
-#we already have distfiles? if livecd - no. new files will be stored
-mount_distfiles=0
-#[ $devel = 1 ] && mount_distfiles=1
-#distfiles_path="/var/www/localhost/for_stage4/distfiles"
 
 #[ $devel = 1 ] && use_packages=1
 #[ $devel = 1 ] && binhost="http://localhost/for_stage4/packages"
 
-#[ $tester = 1 ] && use_packages=1
-#[ $tester = 1 ] && binhost="http://10.10.104.122/for_stage4/packages"
-
-
-
-#we have local pkgs? new files will be stored
-mount_packages=0
-#[ $devel = 1 ] && mount_packages=1
-#packages_path="/var/www/localhost/for_stage4/packages"
-#[ $devel = 1 ] && packages_path="/var/www/localhost/for_stage4/packages"
+[ $tester = 1 ] && use_packages=1
+[ $tester = 1 ] && rm_packages=0
+[ $tester = 1 ] && rm_distfiles=0
+[ $tester = 1 ] && binhost="http://www.stand.gis.lan/NAS00_shared/gentoo/packages/"
 
 
 
 
-#[ $tester = 1 ] && kernel="livecd"
+[ $tester = 1 ] && kernel="livecd"

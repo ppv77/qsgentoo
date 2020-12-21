@@ -1,6 +1,6 @@
 ./tmp/*
 ./var/tmp/*
 ./mnt/*
-./usr/portage/distfiles/*
-./usr/portage/packages/*
+./var/cache/distfiles/*
+./var/cache/binpkgs/*
 ./etc/reslov.conf
