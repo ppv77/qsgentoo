@@ -73,9 +73,9 @@ Stage3_uri="http://distfiles.gentoo.org/releases/amd64/autobuilds/current-stage3
 #Stage3_uri="http://mirror.yandex.ru/gentoo-distfiles/releases/amd64/autobuilds/current-stage3-amd64/"
 
 #----------------------------------------------
-Stage3_file="stage3-amd64-20*.tar.xz"
+Stage3_file="stage3-amd64-2020*.tar.xz"
 #or
-#Stage3_file="stage3-amd64-nomultilib-*.tar.xz"
+#Stage3_file="stage3-amd64-nomultilib-2020*.tar.xz"
 
 #--------------------------------------
 #add some USE
