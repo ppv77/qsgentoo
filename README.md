@@ -7,7 +7,7 @@ Fast way
 1. boot from gentoo livecd
 2. wget -q -O - https://github.com/ppv77/qsgentoo/raw/master/start.sh |bash
 3. reboot
-4. login root:root
+4. login root:superpassword
 5. feel nice
 
 Best way
@@ -19,6 +19,6 @@ Best way
 6. edit and save
 7. ./0000_run.sh
 8. reboot
-9. login root:root
+9. login root:superpassword
 13. feel nice
 
